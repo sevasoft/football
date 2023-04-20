@@ -42,6 +42,17 @@ public class FootballManagerRestController {
 
     @GetMapping("/players")
     public List<Player> findAllPlayers() {return playerService.findAllPlayers();}
-
-
+    @GetMapping("/players/{playerID}")
+    public ResponseEntity<Player> findPlayerById(@PathVariable long playerID) {
+        ResponseEntity<Player> myResponse;
+        try {
+            myResponse = new ResponseEntity<>(playerService.findPlayerByID(playerID), HttpStatus.OK);
+        } catch (FetchNotFoundException e) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
+        return myResponse;
+    }
+    @PostMapping("/players")
+    public ResponseEntity<Player> saveNewPlayer(@RequestBody String playerData) {
+        Player player = playerService.saveNewPlayer(playerData);
+        return new ResponseEntity<Player>(player, HttpStatus.OK);
+    }
 }
