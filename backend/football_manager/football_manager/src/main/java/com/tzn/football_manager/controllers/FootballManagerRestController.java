@@ -22,7 +22,7 @@ public class FootballManagerRestController {
     public List<Team> findAllTeams() {return teamService.findAllTeams();}
 
     @GetMapping("/teams/{teamID}")
-    public ResponseEntity<Team> findTeamById(@PathVariable long teamID) {
+    public ResponseEntity<Team> findTeamById(@PathVariable long teamID) throws FetchNotFoundException {
         ResponseEntity<Team> myResponse;
         try {
             myResponse = new ResponseEntity<>(teamService.findTeamByID(teamID), HttpStatus.OK);
@@ -35,8 +35,8 @@ public class FootballManagerRestController {
         return new ResponseEntity<Team>(team, HttpStatus.OK);
     }
     @PutMapping("/teams/{teamID}")
-    public ResponseEntity<Team> updateTeam(@PathVariable long teamdID, @RequestBody String updateTeamData) {
-        Team teamToBeUpdated = teamService.updateTeam(teamdID, updateTeamData);
+    public ResponseEntity<Team> updateTeam(@PathVariable long teamID, @RequestBody String updateTeamData) {
+        Team teamToBeUpdated = teamService.updateTeam(teamID, updateTeamData);
         return new ResponseEntity<Team>(teamToBeUpdated, HttpStatus.OK);
     }
 
@@ -44,7 +44,7 @@ public class FootballManagerRestController {
     public List<Player> findAllPlayers() {return playerService.findAllPlayers();}
 
     @GetMapping("/players/{playerID}")
-    public ResponseEntity<Player> findPlayerById(@PathVariable long playerID) {
+    public ResponseEntity<Player> findPlayerById(@PathVariable long playerID) throws FetchNotFoundException {
         ResponseEntity<Player> myResponse;
         try {
             myResponse = new ResponseEntity<>(playerService.findPlayerByID(playerID), HttpStatus.OK);

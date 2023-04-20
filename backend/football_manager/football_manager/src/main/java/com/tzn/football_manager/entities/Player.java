@@ -15,7 +15,7 @@ public class Player {
     String playerName;
     @Column(name = "year_of_birth")
     int birthYear;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "team_id")
     Team team;
 
