@@ -8,6 +8,7 @@ import org.hibernate.FetchNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,12 +38,31 @@ public class PlayerService {
         player.setPlayerName(playerInfo[0]);
         player.setBirthYear(Integer.parseInt(playerInfo[1]));
         Long teamId = Long.parseLong(playerInfo[2]);
-        Team team = teamRepo.findById(teamId).orElse(null);
-        if (team == null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Team with id " + teamId + " not found");
-        }
+        Team team = teamRepo.findById(teamId).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.BAD_REQUEST, "Team with id " + teamId + " not found"));
         player.setTeam(team);
 
         return playerRepo.save(player);
+    }
+
+    public Player updatePlayer(Long playerId, String updatedPlayerData){
+        Player existingPlayer = playerRepo.findById(playerId).orElse(null);
+        if (existingPlayer == null) {
+            return null;
+        }
+        String[] updatedPlayerInfo = updatedPlayerData.split(",");
+
+        // bijwerken van de player gegevens
+        existingPlayer.setPlayerName(updatedPlayerInfo[0]);
+        existingPlayer.setBirthYear(Integer.parseInt(updatedPlayerInfo[1]));
+
+        Long teamId = Long.parseLong(updatedPlayerInfo[2]);
+        Team team = teamRepo.findById(teamId).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.BAD_REQUEST, "Team with id " + teamId + " not found"));
+        existingPlayer.setTeam(team);
+
+
+        // opslaan van de bijgewerkte gegevens en retourneren van het bijgewerkte playerobject
+        return playerRepo.save(existingPlayer);
     }
 }
