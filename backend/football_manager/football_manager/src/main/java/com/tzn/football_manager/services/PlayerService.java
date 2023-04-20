@@ -7,7 +7,6 @@ import com.tzn.football_manager.repos.TeamRepo;
 import org.hibernate.FetchNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -45,7 +44,7 @@ public class PlayerService {
         return playerRepo.save(player);
     }
 
-    public Player updatePlayer(Long playerId, String updatedPlayerData){
+    public Player updatePlayer(Long playerId, String updatedPlayerData) throws ResponseStatusException{
         Player existingPlayer = playerRepo.findById(playerId).orElse(null);
         if (existingPlayer == null) {
             return null;
