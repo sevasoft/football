@@ -1,5 +1,7 @@
 package com.tzn.football_manager;
+import com.tzn.football_manager.entities.Player;
 import com.tzn.football_manager.entities.Team;
+import com.tzn.football_manager.services.PlayerService;
 import com.tzn.football_manager.services.TeamService;
 import org.hibernate.FetchNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,8 @@ import java.util.List;
 public class FootballManagerRestController {
     @Autowired
     TeamService teamService;
+    @Autowired
+    PlayerService playerService;
 
     @GetMapping("/teams")
     public List<Team> findAllTeams() {return teamService.findAllTeams();}
@@ -30,10 +34,14 @@ public class FootballManagerRestController {
         Team team = teamService.saveNewTeam(teamData);
         return new ResponseEntity<Team>(team, HttpStatus.OK);
     }
-    @PutMapping("/teams"/{teamID})
+    @PutMapping("/teams/{teamID}")
     public ResponseEntity<Team> updateTeam(@PathVariable long teamdID, @RequestBody String updateTeamData) {
         Team teamToBeUpdated = teamService.updateTeam(teamdID, updateTeamData);
         return new ResponseEntity<Team>(teamToBeUpdated, HttpStatus.OK);
     }
+
+    @GetMapping("/players")
+    public List<Player> findAllPlayers() {return playerService.findAllPlayers();}
+
 
 }
