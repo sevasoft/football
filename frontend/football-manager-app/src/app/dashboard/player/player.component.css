@@ -4,8 +4,14 @@
     padding: 8px;
 }
 
-.team {
+.info {
     padding-left: 16px;
+}
+
+.team {
+    font-size: 0.8em;
+    color: gray;
+    margin-bottom: 8px;
 }
 
 .name {
