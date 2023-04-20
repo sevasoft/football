@@ -35,5 +35,21 @@ public class TeamService {
 
         return teamRepo.save(team);
     }
+    public Team updateTeam(Long teamId, String updatedTeamData){
+        Team existingTeam = teamRepo.findById(teamId).orElse(null);
+        if (existingTeam == null) {
+            return null;
+        }
+        String[] updatedTeamInfo = updatedTeamData.split(",");
+
+        // bijwerken van de teamgegevens
+        existingTeam.setTeamName(updatedTeamInfo[0]);
+        existingTeam.setEstablishedIn(Integer.parseInt(updatedTeamInfo[1]));
+        existingTeam.setInternational(Boolean.parseBoolean(updatedTeamInfo[2]));
+
+        // opslaan van de bijgewerkte gegevens en retourneren van het bijgewerkte teamobject
+        return teamRepo.save(existingTeam);
+    }
+
 
 }
