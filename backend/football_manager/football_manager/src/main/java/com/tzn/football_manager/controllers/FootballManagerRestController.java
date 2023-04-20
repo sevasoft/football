@@ -42,6 +42,7 @@ public class FootballManagerRestController {
 
     @GetMapping("/players")
     public List<Player> findAllPlayers() {return playerService.findAllPlayers();}
+
     @GetMapping("/players/{playerID}")
     public ResponseEntity<Player> findPlayerById(@PathVariable long playerID) {
         ResponseEntity<Player> myResponse;
@@ -54,5 +55,10 @@ public class FootballManagerRestController {
     public ResponseEntity<Player> saveNewPlayer(@RequestBody String playerData) {
         Player player = playerService.saveNewPlayer(playerData);
         return new ResponseEntity<Player>(player, HttpStatus.OK);
+    }
+    @PutMapping("/players/{playerID}")
+    public ResponseEntity<Player> updatePlayer(@PathVariable long playerID, @RequestBody String updatePlayerData) {
+        Player playerToBeUpdated = playerService.updatePlayer(playerID, updatePlayerData);
+        return new ResponseEntity<Player>(playerToBeUpdated, HttpStatus.OK);
     }
 }
