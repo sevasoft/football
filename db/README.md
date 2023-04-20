@@ -54,3 +54,9 @@ VALUES
   ('Zinedine Zidane', 1972, 2),
   ('Pele', 1940, 5),
   ('Diego Maradona', 1960, 7);
+  
+  Finally, add automated sequence generation for both tables by running the following queries:
+  
+  CREATE SEQUENCE team_id_seq START 1;
+  CREATE SEQUENCE player_id_seq START 1;
+  
