@@ -1,23 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PlayerComponent } from './player/player.component';
-import { TeamComponent } from './team/team.component';
 import { SharedModule } from '../shared/shared.module';
+import { DashboardRoutingModule } from './dashboard-routing.module';
+import { DashboardComponent } from './dashboard.component';
+import { PlayersModule } from './players/players.module';
 
 
 
 @NgModule({
   declarations: [
-    PlayerComponent,
-    TeamComponent
+    DashboardComponent
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    PlayersModule,
+    DashboardRoutingModule
   ],
   exports: [
-    PlayerComponent,
-    TeamComponent
+    DashboardComponent
   ]
 })
 export class DashboardModule { }
