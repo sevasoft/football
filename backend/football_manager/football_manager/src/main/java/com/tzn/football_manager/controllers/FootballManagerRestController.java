@@ -1,4 +1,4 @@
-package com.tzn.football_manager;
+package com.tzn.football_manager.controllers;
 import com.tzn.football_manager.entities.Player;
 import com.tzn.football_manager.entities.Team;
 import com.tzn.football_manager.services.PlayerService;
