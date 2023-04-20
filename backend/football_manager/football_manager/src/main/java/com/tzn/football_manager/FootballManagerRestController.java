@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-public class TeamRestController {
+public class FootballManagerRestController {
     @Autowired
     TeamService teamService;
 
@@ -30,4 +30,10 @@ public class TeamRestController {
         Team team = teamService.saveNewTeam(teamData);
         return new ResponseEntity<Team>(team, HttpStatus.OK);
     }
+    @PutMapping("/teams"/{teamID})
+    public ResponseEntity<Team> updateTeam(@PathVariable long teamdID, @RequestBody String updateTeamData) {
+        Team teamToBeUpdated = teamService.updateTeam(teamdID, updateTeamData);
+        return new ResponseEntity<Team>(teamToBeUpdated, HttpStatus.OK);
+    }
+
 }
