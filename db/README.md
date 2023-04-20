@@ -55,8 +55,10 @@ VALUES
   ('Pele', 1940, 5),
   ('Diego Maradona', 1960, 7);
   
-  Finally, add automated sequence generation for both tables by running the following queries:
+  When you have verified that everything works, you can add automated sequence generation for both tables by running the following queries:
   
   CREATE SEQUENCE team_id_seq START 1;
   CREATE SEQUENCE player_id_seq START 1;
+  
+  (Don't forget to delete the dummy data, otherwise you will get an error saying that the id the sequencer tries to generate already exists)
   
