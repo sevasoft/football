@@ -1,11 +1,20 @@
 # Database
 
-First open PgAdmin and enter personal password if necessary.
+First open PgAdmin and enter master password if necessary.
 On the lefthand side, click open Servers -> PostgreSQL -> Databases
 Right click on Databases, choose Create -> Database...
 Database: football
 Owner: postgres
 click save. (You can choose to close PgAdmin now)
+
+If you wish to change your postgres password to be the same as the one included in version control:
+Hit ALT+SHIFT+Q 
+This should open your query tool in pgAdmin.
+Enter the following query:
+ALTER ROLE postgres WITH PASSWORD '12345';
+Hit execute
+Your new password is now: 12345
+Note: this is also the master password you need to enter when you start up pgAdmin from now on.
 
 Now start up DBeaver.
 Create a new connection.
