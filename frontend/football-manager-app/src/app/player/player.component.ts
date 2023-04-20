@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Player } from '../shared/player';
 
 @Component({
   selector: 'fm-player',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./player.component.css']
 })
 export class PlayerComponent {
-
+  @Input() player: Player;
 }
