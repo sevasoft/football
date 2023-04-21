@@ -70,7 +70,7 @@ public class TeamService {
         }
         teamRepo.deleteById(teamId);
     }
-    public void deleteAllTeam (Long teamId) {
+    public void deleteAllTeams (Long teamId) {
         Optional<Team> myTeam = teamRepo.findById(teamId);
         if (myTeam.isEmpty()) {
             throw new FetchNotFoundException("Team: ", new Team());

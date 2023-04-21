@@ -41,13 +41,13 @@ public class PlayerRestController {
         }
         @DeleteMapping("/players")
         public ResponseEntity<Player> deleteAllPlayers() {
-            Player player = playerService.deleteAllPlayers();
+            playerService.deleteAllPlayers();
             return new ResponseEntity<>(HttpStatus.OK);
         }
 
         @DeleteMapping("/players/{id}")
-        public ResponseEntity<?> deleteTeambyID(@PathVariable Long playerID) {
-            Player player = playerService.deleteByID(playerID);
+        public ResponseEntity<?> deletePlayerbyID(@PathVariable Long playerID) {
+            playerService.deletePlayerByID(playerID);
             return ResponseEntity.ok().build();
         }
     }

@@ -51,8 +51,8 @@ public class TeamRestController {
     }
 
     @DeleteMapping("/teams/{teamID}")
-    public ResponseEntity<?> deleteTeambyID(@PathVariable Long teamID) {
-        Team team = teamService.deleteByID(teamID);
+    public ResponseEntity<?> deleteTeamByID(@PathVariable Long teamID) {
+        teamService.deleteTeamById(teamID);
         return ResponseEntity.ok().build();
     }
 }
