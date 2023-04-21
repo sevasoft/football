@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Player } from 'src/app/shared/player';
 import { PlayersService } from './players.service';
 

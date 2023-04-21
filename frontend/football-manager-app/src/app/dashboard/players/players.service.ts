@@ -8,8 +8,6 @@ export class PlayersService {
   constructor() {}
 
   getPlayers(): any {
-    let data: any;
-
     return (
       axios
         // .get('https://dummyjson.com/todos')
@@ -45,7 +43,7 @@ export class PlayersService {
 
   postPlayerByID(playerID: number, playerData: any): any {
     let data: any;
-  
+
     axios
       .post(`http://localhost:8080/players/${playerID}`, playerData)
       .then((response) => {
@@ -55,9 +53,7 @@ export class PlayersService {
       .catch((error) => {
         console.log(error);
       });
-  
+
     return data;
   }
-
-
 }
