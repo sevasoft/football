@@ -13,4 +13,6 @@ public interface MatchRepo extends JpaRepository <Match, Long> {
     List<Match> findAll();
 
     Optional<Match> findById(Long matchID);
+
+//    Optional<Match> findByName(String name);
 }

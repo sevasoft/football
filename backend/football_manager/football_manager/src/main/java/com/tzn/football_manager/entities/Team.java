@@ -12,7 +12,7 @@ public class Team {
     @SequenceGenerator(name = "team_id_seq", sequenceName = "team_id_seq", allocationSize = 1)
     Long id;
     @Column(name = "club_name")
-    String teamName;
+    String name;
     @Column(name = "established_in")
     int establishedIn;
     @Column(name = "is_international")

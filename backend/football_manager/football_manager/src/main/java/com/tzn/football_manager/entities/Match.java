@@ -13,10 +13,13 @@ public class Match {
     Long id;
 
     @Column(name = "team_1")
-    Team team1;
+    String team1;
 
-    @Column(name = "team2")
-    Team team2;
+    @Column(name = "team_2")
+    String team2;
+
+//    @Column(name = "match_name")
+//    String matchName = team1 + " vs. "  + team2;
 
     @Column(name = "goals_team1")
     int goalsTeam1;

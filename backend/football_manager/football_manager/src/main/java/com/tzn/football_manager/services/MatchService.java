@@ -30,4 +30,11 @@ public class MatchService {
         }
         return myMatch.get();
     }
+//    public Match findMatchByName(String name) throws FetchNotFoundException {
+//        Optional<Match> myMatch = matchRepo.findByName(name);
+//        if(myMatch.isEmpty()){
+//            throw new FetchNotFoundException("Match: ", new Match());
+//        }
+//        return myMatch.get();
+//    }
 }

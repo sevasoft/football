@@ -30,7 +30,14 @@ public class PlayerService {
     public Player findPlayerByID(Long id) throws FetchNotFoundException {
         Optional<Player> myPlayer = playerRepo.findById(id);
         if(myPlayer.isEmpty()){
-            throw new FetchNotFoundException("Team: ", new Team());
+            throw new FetchNotFoundException("Player: ", new Player());
+        }
+        return myPlayer.get();
+    }
+    public Player findPlayerByName(String name) throws FetchNotFoundException {
+        Optional<Player> myPlayer = playerRepo.findByName(name);
+        if(myPlayer.isEmpty()){
+            throw new FetchNotFoundException("Player: ", new Player());
         }
         return myPlayer.get();
     }
@@ -38,7 +45,7 @@ public class PlayerService {
 
         String[] playerInfo = playerData.split(",");
         Player player = new Player();
-        player.setPlayerName(playerInfo[0]);
+        player.setName(playerInfo[0]);
         player.setBirthYear(Integer.parseInt(playerInfo[1]));
 
         Long teamId = null;
@@ -58,7 +65,7 @@ public class PlayerService {
         String[] updatedPlayerInfo = updatedPlayerData.split(",");
 
         // bijwerken van de player gegevens
-        existingPlayer.setPlayerName(updatedPlayerInfo[0]);
+        existingPlayer.setName(updatedPlayerInfo[0]);
         existingPlayer.setBirthYear(Integer.parseInt(updatedPlayerInfo[1]));
 
         Long teamId = Long.parseLong(updatedPlayerInfo[2]);

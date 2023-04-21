@@ -2,6 +2,7 @@ package com.tzn.football_manager.controllers;
 
 import java.util.List;
 
+import com.tzn.football_manager.entities.Player;
 import org.hibernate.FetchNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,6 +35,16 @@ public class TeamRestController {
         ResponseEntity<Team> myResponse;
         try {
             myResponse = new ResponseEntity<>(teamService.findTeamByID(teamID), HttpStatus.OK);
+        } catch (FetchNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return myResponse;
+    }
+    @GetMapping("/teams/{teamName}")
+    public ResponseEntity<Team> findTeamByName(@PathVariable String teamName) throws FetchNotFoundException {
+        ResponseEntity<Team> myResponse;
+        try {
+            myResponse = new ResponseEntity<>(teamService.findTeamByName(teamName), HttpStatus.OK);
         } catch (FetchNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

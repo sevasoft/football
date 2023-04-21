@@ -39,6 +39,16 @@ public class PlayerRestController {
         }
         return myResponse;
     }
+    @GetMapping("/players/{playerName}")
+    public ResponseEntity<Player> findPlayerByName(@PathVariable String playerName) throws FetchNotFoundException {
+        ResponseEntity<Player> myResponse;
+        try {
+            myResponse = new ResponseEntity<>(playerService.findPlayerByName(playerName), HttpStatus.OK);
+        } catch (FetchNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return myResponse;
+    }
 
     @PostMapping("/players")
     public ResponseEntity<Player> saveNewPlayer(@RequestBody String playerData) {

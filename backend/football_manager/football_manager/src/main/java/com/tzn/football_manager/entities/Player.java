@@ -12,7 +12,7 @@ public class Player {
     @SequenceGenerator(name = "player_id_seq", sequenceName = "player_id_seq", allocationSize = 1)
     Long id;
     @Column(name = "name")
-    String playerName;
+    String name;
     @Column(name = "year_of_birth")
     int birthYear;
     @ManyToOne

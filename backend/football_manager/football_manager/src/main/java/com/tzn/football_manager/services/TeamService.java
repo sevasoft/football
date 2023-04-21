@@ -29,11 +29,18 @@ public class TeamService {
         }
         return myTeam.get();
     }
+    public Team findTeamByName(String name) throws FetchNotFoundException {
+        Optional<Team> myTeam = teamRepo.findByName(name);
+        if(myTeam.isEmpty()){
+            throw new FetchNotFoundException("Team: ", new Team());
+        }
+        return myTeam.get();
+    }
 
     public Team saveNewTeam(String teamData) {
         String[] teamInfo = teamData.split(",");
         Team team = new Team();
-        team.setTeamName(teamInfo[0]);
+        team.setName(teamInfo[0]);
         team.setEstablishedIn(Integer.parseInt(teamInfo[1]));
         team.setInternational(Boolean.parseBoolean(teamInfo[2]));
 
@@ -48,7 +55,7 @@ public class TeamService {
         String[] updatedTeamInfo = updatedTeamData.split(",");
 
         // bijwerken van de teamgegevens
-        existingTeam.setTeamName(updatedTeamInfo[0]);
+        existingTeam.setName(updatedTeamInfo[0]);
         existingTeam.setEstablishedIn(Integer.parseInt(updatedTeamInfo[1]));
         existingTeam.setInternational(Boolean.parseBoolean(updatedTeamInfo[2]));
 
@@ -73,5 +80,4 @@ public class TeamService {
 //        }
         teamRepo.deleteAll();
     }
-
 }

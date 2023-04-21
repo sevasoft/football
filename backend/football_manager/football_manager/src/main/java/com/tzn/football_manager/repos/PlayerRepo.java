@@ -12,4 +12,6 @@ public interface PlayerRepo extends JpaRepository<Player, Long> {
 
     public Optional<Player> findById(Long id);
 
+    public Optional<Player> findByName(String name);
+
 }
