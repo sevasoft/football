@@ -37,12 +37,16 @@ CREATE TABLE public.players (
 	id serial4 NOT NULL,
 	"name" varchar(255) NOT NULL,
 	year_of_birth int4 NOT NULL,
-	team_id int4 NULL,
+	team_id int4,
 	CONSTRAINT players_pkey PRIMARY KEY (id),
-	CONSTRAINT players_team_id_fkey FOREIGN KEY (team_id) REFERENCES public.teams(id) ON DELETE SET NULL ON UPDATE SET NULL
+	CONSTRAINT players_team_id_fkey FOREIGN KEY (team_id) REFERENCES public.teams(id)
 );
 
-You now created the player and the teams table.
+	ALTER TABLE public.players DROP CONSTRAINT players_team_id_fkey;
+	ALTER TABLE public.players ADD CONSTRAINT players_team_id_fkey FOREIGN KEY (team_id) REFERENCES public.teams(id) ON DELETE SET NULL ON UPDATE SET NULL;
+
+
+You now created the player and the teams tables and added the right constraints.
 For some dummy data; open new SQL script (same as previous and paste and run the following:
 
 INSERT INTO teams (club_name, established_in, is_international)
@@ -68,7 +72,35 @@ VALUES
   
   When you have verified that everything works, you can add automated sequence generation for both tables by running the following queries:
   
-  CREATE SEQUENCE team_id_seq START 1;
+  CREATE SEQUENCE team_id_seq START 1; 
   CREATE SEQUENCE player_id_seq START 1;
   
   (Don't forget to delete the dummy data, otherwise you will get an error saying that the id the sequencer tries to generate already exists)
+  
+  To make sure there can only be 11 players in a team add:
+
+CREATE OR REPLACE FUNCTION enforce_player_limit()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF (
+        SELECT COUNT(*) FROM players WHERE team_id = NEW.team_id
+    ) >= 11 THEN
+        RAISE EXCEPTION 'Cannot add more than 11 players to a team';
+    ELSE
+        RETURN NEW;
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER player_limit_trigger 
+BEFORE INSERT ON players
+FOR EACH ROW EXECUTE FUNCTION enforce_player_limit();
+
+And to create the matches table use:
+CREATE TABLE matches (
+  id serial PRIMARY KEY,
+  team1_name varchar(255) NOT NULL,
+  team2_name varchar(255) NOT NULL,
+  team1_goals integer NOT NULL,
+  team2_goals integer NOT NULL
+);
