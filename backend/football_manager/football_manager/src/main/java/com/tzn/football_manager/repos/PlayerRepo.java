@@ -11,4 +11,6 @@ public interface PlayerRepo extends JpaRepository<Player, Long> {
     public List<Player> findAll();
 
     public Optional<Player> findById(Long id);
+
+    //public void deleteById(Long id);
 }
