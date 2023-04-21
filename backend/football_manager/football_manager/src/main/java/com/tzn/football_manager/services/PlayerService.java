@@ -62,8 +62,24 @@ public class PlayerService {
                 new ResponseStatusException(HttpStatus.BAD_REQUEST, "Team with id " + teamId + " not found"));
         existingPlayer.setTeam(team);
 
-
         // opslaan van de bijgewerkte gegevens en retourneren van het bijgewerkte playerobject
         return playerRepo.save(existingPlayer);
     }
+
+
+    public void deletePlayerByID(Long id) throws FetchNotFoundException {
+        Optional<Player> myPlayer = playerRepo.findById(id);
+        if (myPlayer.isEmpty()) {
+            throw new FetchNotFoundException("Player with ID: ", id + "not found");
+        }
+        playerRepo.deleteById(id);
+    }
+
+    public void deleteAllPlayers() throws FetchNotFoundException {
+        if(playerRepo.findAll().isEmpty()){
+            System.out.println("List is empty!");
+        }
+        playerRepo.deleteAll();
+    }
+
 }
