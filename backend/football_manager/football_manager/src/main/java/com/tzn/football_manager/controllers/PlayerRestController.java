@@ -9,12 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@RestController
 public class PlayerRestController {
-
-    @RestController
-    public class TeamRestController {
-
         @Autowired
         PlayerService playerService;
 
@@ -53,4 +49,3 @@ public class PlayerRestController {
         }
     }
 
-}

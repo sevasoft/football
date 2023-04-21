@@ -70,17 +70,17 @@ public class PlayerService {
 
     public void deletePlayerByID(Long id) throws FetchNotFoundException {
         Optional<Player> myPlayer = playerRepo.findById(id);
-//        if (myPlayer.isEmpty()) {
-//            throw new FetchNotFoundException("Player with ID: ", id + "not found");
-//        }
+        if (myPlayer.isEmpty()) {
+            throw new FetchNotFoundException("Player with ID: ", id + "not found");
+        }
         playerRepo.deleteById(id);
     }
 
     public void deleteAllPlayers() throws FetchNotFoundException{
-//        List<Player> players = playerRepo.findAll();
-//        if(playerRepo.findAll().isEmpty()){
-//            throw new FetchNotFoundException("There are no players in the list", players);
-//        }
+        List<Player> players = playerRepo.findAll();
+        if(playerRepo.findAll().isEmpty()){
+            throw new FetchNotFoundException("There are no players in the list", players);
+        }
         playerRepo.deleteAll();
     }
 }
