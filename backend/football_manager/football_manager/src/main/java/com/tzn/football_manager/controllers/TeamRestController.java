@@ -46,6 +46,7 @@ public class TeamRestController {
 
     @DeleteMapping("/teams")
     public ResponseEntity<Team> deleteAllTeams() {
+        System.out.println("method called");
         teamService.deleteAllTeams();
         return new ResponseEntity<>(HttpStatus.OK);
     }
