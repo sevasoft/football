@@ -1,7 +1,3 @@
-.square-image {
-    width: 168px;
-    min-width: 168px;
-    height: 156px;
-    max-height: 156px;
-    object-fit: contain;
+img {
+    margin: 2rem auto;
 }

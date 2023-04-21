@@ -6,4 +6,5 @@ export interface Team {
     yearEstablished: number;
     isInternational: boolean;
     image: string;
+    description: string;
 }

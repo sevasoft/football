@@ -1,10 +1,8 @@
-<section class="player">
-    <a>
+<section>
+    <a href="{{player.image}}">
         <fm-square-image [src]="player.image" [alt]="player.name"></fm-square-image>
     </a>
-    <div class="info">
-        <p class="name">{{player.name}}</p>
-        <a class="team">{{player.team.name}}</a>
-        <p class="description">{{player.yearOfBirth}}</p>
-    </div>
+    <p class="mt-6 text-lg font-semibold leading-8 text-gray-900">{{player.name}}</p>
+    <p class="text-base leading-7 text-gray-600">{{player.team.name}}</p>
+    <p class="text-base leading-7 text-gray-600">{{player.yearOfBirth}}</p>
 </section>
