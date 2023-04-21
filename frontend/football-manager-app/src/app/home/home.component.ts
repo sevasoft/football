@@ -1,10 +1,24 @@
-import { Component } from '@angular/core';
+import axios from 'axios';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'fm-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  title = 'My App';
+  data: any;
 
+  ngOnInit() {
+    axios
+      .get('https://dummyjson.com/todos')
+      .then((response) => {
+        this.data = response.data;
+        console.log(this.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 }
