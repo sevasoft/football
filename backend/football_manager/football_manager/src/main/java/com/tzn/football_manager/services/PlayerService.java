@@ -39,11 +39,13 @@ public class PlayerService {
         Player player = new Player();
         player.setPlayerName(playerInfo[0]);
         player.setBirthYear(Integer.parseInt(playerInfo[1]));
-        Long teamId = Long.parseLong(playerInfo[2]);
-        Team team = teamRepo.findById(teamId).orElseThrow(() ->
-                new ResponseStatusException(HttpStatus.BAD_REQUEST, "Team with id " + teamId + " not found"));
-        player.setTeam(team);
 
+        Long teamId = null;
+        if(!playerInfo[2].equalsIgnoreCase("null")){
+            teamId = Long.parseLong(playerInfo[2]);
+            Team team = teamRepo.findById(teamId).get();
+            player.setTeam(team);
+        }
         return playerRepo.save(player);
     }
 
