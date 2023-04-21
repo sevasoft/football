@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Player } from '../shared/player';
+import { Team } from '../shared/team';
 
 @Component({
   selector: 'fm-dashboard',
@@ -7,4 +9,19 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
 
+  teams: Team[] = [{
+    id: 1,
+    name: 'Ajax',
+    yearEstablished: 1990,
+    isInternational: true,
+    image: 'https://unsplash.it/150/160'
+  }]
+
+  players: Player[] = [{
+    id: 1,
+    name: 'Rick',
+    yearOfBirth: 1990,
+    team: this.teams[0],
+    image: 'https://unsplash.it/160/150'
+  }]
 }
