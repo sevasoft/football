@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TeamsComponent } from './teams.component';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { TeamComponent } from './team/team.component';
 
 
@@ -12,8 +11,7 @@ import { TeamComponent } from './team/team.component';
     TeamComponent
   ],
   imports: [
-    CommonModule,
-    SharedModule
+    CommonModule
   ],
   exports: [
     TeamsComponent

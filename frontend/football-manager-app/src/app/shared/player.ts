@@ -5,5 +5,4 @@ export interface Player {
     name: string;
     yearOfBirth: number;
     team: Team;
-    image: string;
 }

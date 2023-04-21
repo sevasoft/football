@@ -13,28 +13,23 @@ export class DashboardComponent {
     id: 1,
     name: 'Ajax',
     yearEstablished: 1990,
-    isInternational: true,
-    image: 'https://unsplash.it/150/160',
-    description: '...'
+    isInternational: true
   }]
 
   players: Player[] = [{
     id: 1,
     name: 'Rick',
     yearOfBirth: 1990,
-    team: this.teams[0],
-    image: 'https://unsplash.it/160/150'
+    team: this.teams[0]
   }, {
     id: 1,
     name: 'Rick',
     yearOfBirth: 1990,
-    team: this.teams[0],
-    image: 'https://unsplash.it/160/150'
+    team: this.teams[0]
   }, {
     id: 1,
     name: 'Rick',
     yearOfBirth: 1990,
-    team: this.teams[0],
-    image: 'https://unsplash.it/160/150'
+    team: this.teams[0]
   }]
 }

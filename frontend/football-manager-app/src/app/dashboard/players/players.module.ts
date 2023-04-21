@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PlayersComponent } from './players.component';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { PlayerComponent } from './player/player.component';
 
 
@@ -12,8 +11,7 @@ import { PlayerComponent } from './player/player.component';
     PlayerComponent,
   ],
   imports: [
-    CommonModule,
-    SharedModule
+    CommonModule
   ],
   exports: [
     PlayersComponent

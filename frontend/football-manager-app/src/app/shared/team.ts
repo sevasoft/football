@@ -5,6 +5,4 @@ export interface Team {
     name: string;
     yearEstablished: number;
     isInternational: boolean;
-    image: string;
-    description: string;
 }
