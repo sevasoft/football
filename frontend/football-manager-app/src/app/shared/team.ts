@@ -1,8 +1,10 @@
-import { Player } from "./player";
+import { Player } from './player';
 
 export interface Team {
-    id: number;
-    name: string;
-    yearEstablished: number;
-    isInternational: boolean;
+  id: number;
+  teamName: string;
+  // yearEstablished: number;
+  establishedIn: number;
+  // isInternational: boolean;
+  international: boolean;
 }

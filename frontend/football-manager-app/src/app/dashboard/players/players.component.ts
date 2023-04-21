@@ -8,12 +8,19 @@ import { PlayersService } from './players.service';
   styleUrls: ['./players.component.css'],
 })
 export class PlayersComponent implements OnInit {
-  data: any;
-  @Input() players: Player[];
+  data: Player[];
 
   constructor(private playerService: PlayersService) {}
 
   ngOnInit() {
-    this.data = this.playerService.getPlayers();
+    this.data = this.playerService
+      .getPlayers()
+      .then((response: any) => {
+        this.data = response.data;
+        console.log(this.data);
+      })
+      .catch((error: any) => {
+        console.log(error);
+      });
   }
 }

@@ -5,20 +5,9 @@ import { DashboardComponent } from './dashboard.component';
 import { PlayersModule } from './players/players.module';
 import { TeamsModule } from './teams/teams.module';
 
-
-
 @NgModule({
-  declarations: [
-    DashboardComponent
-  ],
-  imports: [
-    CommonModule,
-    PlayersModule,
-    TeamsModule,
-    DashboardRoutingModule
-  ],
-  exports: [
-    DashboardComponent
-  ]
+  declarations: [DashboardComponent],
+  imports: [CommonModule, PlayersModule, TeamsModule, DashboardRoutingModule],
+  exports: [DashboardComponent],
 })
-export class DashboardModule { }
+export class DashboardModule {}

@@ -10,18 +10,20 @@ export class PlayersService {
   getPlayers(): any {
     let data: any;
 
-    axios
-      // .get('https://dummyjson.com/todos')
-      .get('http://localhost:8080/players')
-      .then((response) => {
-        data = response.data;
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    return (
+      axios
+        // .get('https://dummyjson.com/todos')
+        .get('http://localhost:8080/players')
+    );
+    // .then((response) => {
+    //   data = response.data;
+    //   console.log(data);
+    // })
+    // .catch((error) => {
+    //   console.log(error);
+    // });
 
-    return data;
+    // return data;
   }
 
   getPlayerByID(): any {

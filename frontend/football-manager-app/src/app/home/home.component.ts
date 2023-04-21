@@ -12,7 +12,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     axios
-      .get('https://dummyjson.com/todos')
+      // .get('https://dummyjson.com/todos')
+      .get('http://localhost:8080/teams')
       .then((response) => {
         this.data = response.data;
         console.log(this.data);
