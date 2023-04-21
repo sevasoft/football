@@ -25,19 +25,21 @@ Open the new football database -> Databases -> football -> Schemas -> public.
 Right click on public -> SQL editor -> new SQL script.
 Paste and run the following:
 
-CREATE TABLE teams (
-  id SERIAL PRIMARY KEY,
-  club_name VARCHAR(255) NOT NULL,
-  established_in INTEGER NOT NULL,
-  is_international BOOLEAN NOT NULL
+CREATE TABLE public.teams (
+	id serial4 NOT NULL,
+	club_name varchar(255) NOT NULL,
+	established_in int4 NOT NULL,
+	is_international bool NOT NULL,
+	CONSTRAINT teams_pkey PRIMARY KEY (id)
 );
 
-CREATE TABLE players (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
-  year_of_birth INTEGER NOT NULL,
-  team_id INTEGER NOT NULL,
-  FOREIGN KEY (team_id) REFERENCES teams(id)
+CREATE TABLE public.players (
+	id serial4 NOT NULL,
+	"name" varchar(255) NOT NULL,
+	year_of_birth int4 NOT NULL,
+	team_id int4 NULL,
+	CONSTRAINT players_pkey PRIMARY KEY (id),
+	CONSTRAINT players_team_id_fkey FOREIGN KEY (team_id) REFERENCES public.teams(id) ON DELETE SET NULL ON UPDATE SET NULL
 );
 
 You now created the player and the teams table.
@@ -70,4 +72,3 @@ VALUES
   CREATE SEQUENCE player_id_seq START 1;
   
   (Don't forget to delete the dummy data, otherwise you will get an error saying that the id the sequencer tries to generate already exists)
-  
