@@ -8,5 +8,5 @@ import { Team } from '../../../shared/team';
   styleUrls: ['./team.component.css']
 })
 export class TeamComponent {
-  @Input() teams: Team;
+  @Input() team: Team;
 }
