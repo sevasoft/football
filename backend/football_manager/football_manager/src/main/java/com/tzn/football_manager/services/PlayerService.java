@@ -21,10 +21,11 @@ public class PlayerService {
     TeamRepo teamRepo;
 
     public List<Player> findAllPlayers(){
+        List<Player> players = playerRepo.findAll();
         if(playerRepo.findAll().isEmpty()){
-            System.out.println("List is empty!");
+            throw new FetchNotFoundException("There are no players in the list", players);
         }
-        return playerRepo.findAll();
+        return players;
     }
     public Player findPlayerByID(Long id) throws FetchNotFoundException {
         Optional<Player> myPlayer = playerRepo.findById(id);
@@ -75,9 +76,10 @@ public class PlayerService {
         playerRepo.deleteById(id);
     }
 
-    public void deleteAllPlayers() {
+    public void deleteAllPlayers() throws FetchNotFoundException{
+        List<Player> players = playerRepo.findAll();
         if(playerRepo.findAll().isEmpty()){
-            System.out.println("List is empty!");
+            throw new FetchNotFoundException("There are no players in the list", players);
         }
         playerRepo.deleteAll();
     }

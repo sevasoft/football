@@ -14,11 +14,12 @@ public class TeamService {
     TeamRepo teamRepo;
 
 
-    public List<Team> findAllTeams() {
-        if (teamRepo.findAll().isEmpty()) {
-            System.out.println("List is empty!");
+    public List<Team> findAllTeams() throws FetchNotFoundException{
+        List<Team> teams = teamRepo.findAll();
+        if(teamRepo.findAll().isEmpty()){
+            throw new FetchNotFoundException("There are no teams in the list", teams);
         }
-        return teamRepo.findAll();
+        return teams;
     }
 
     public Team findTeamByID(Long id) throws FetchNotFoundException {
@@ -65,9 +66,10 @@ public class TeamService {
         }
         teamRepo.deleteById(teamId);
     }
-    public void deleteAllTeams () {
+    public void deleteAllTeams () throws FetchNotFoundException{
+        List<Team> teams = teamRepo.findAll();
         if(teamRepo.findAll().isEmpty()){
-            System.out.println("List is empty!");
+            throw new FetchNotFoundException("There are no teams in the list", teams);
         }
         teamRepo.deleteAll();
     }
