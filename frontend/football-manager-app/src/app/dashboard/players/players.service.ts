@@ -23,4 +23,39 @@ export class PlayersService {
 
     return data;
   }
+
+  getPlayerByID(): any {
+    let data: any;
+
+    axios
+      // .get('https://dummyjson.com/todos')
+      .get('http://localhost:8080/players/{playerID}')
+      .then((response) => {
+        data = response.data;
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    return data;
+  }
+
+  postPlayerByID(playerID: number, playerData: any): any {
+    let data: any;
+  
+    axios
+      .post(`http://localhost:8080/players/${playerID}`, playerData)
+      .then((response) => {
+        data = response.data;
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  
+    return data;
+  }
+
+
 }
