@@ -1,8 +1,8 @@
-import { Team } from "./team";
+import { Team } from './team';
 
 export interface Player {
-    id: number;
-    name: string;
-    yearOfBirth: number;
-    team: Team;
+  id: number;
+  birthYear: number;
+  playerName: string;
+  team: Team;
 }
