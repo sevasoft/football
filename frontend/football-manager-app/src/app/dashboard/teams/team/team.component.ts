@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Team } from '../../../shared/team';
+
 
 @Component({
   selector: 'fm-team',
@@ -6,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./team.component.css']
 })
 export class TeamComponent {
-
+  @Input() teams: Team;
 }
