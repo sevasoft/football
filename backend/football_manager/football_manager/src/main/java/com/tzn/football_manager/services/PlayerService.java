@@ -75,7 +75,7 @@ public class PlayerService {
         playerRepo.deleteById(id);
     }
 
-    public void deleteAllPlayers() throws FetchNotFoundException {
+    public void deleteAllPlayers() {
         if(playerRepo.findAll().isEmpty()){
             System.out.println("List is empty!");
         }

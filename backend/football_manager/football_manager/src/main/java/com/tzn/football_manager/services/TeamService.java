@@ -1,15 +1,10 @@
 package com.tzn.football_manager.services;
 
-import com.tzn.football_manager.entities.Player;
 import com.tzn.football_manager.entities.Team;
 import com.tzn.football_manager.repos.TeamRepo;
 import org.hibernate.FetchNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -70,12 +65,11 @@ public class TeamService {
         }
         teamRepo.deleteById(teamId);
     }
-    public void deleteAllTeams (Long teamId) {
-        Optional<Team> myTeam = teamRepo.findById(teamId);
-        if (myTeam.isEmpty()) {
-            throw new FetchNotFoundException("Team: ", new Team());
+    public void deleteAllTeams () {
+        if(teamRepo.findAll().isEmpty()){
+            System.out.println("List is empty!");
         }
-        teamRepo.deleteById(teamId);
+        teamRepo.deleteAll();
     }
 
 }
