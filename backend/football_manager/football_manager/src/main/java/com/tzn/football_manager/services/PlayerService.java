@@ -34,6 +34,7 @@ public class PlayerService {
         }
         return myPlayer.get();
     }
+
     public Player findPlayerByName(String name) throws FetchNotFoundException {
         Optional<Player> myPlayer = playerRepo.findByName(name);
         if(myPlayer.isEmpty()){
@@ -41,6 +42,15 @@ public class PlayerService {
         }
         return myPlayer.get();
     }
+
+//    public List<Player> findPlayersByName(String name) throws FetchNotFoundException {
+//
+//        List<Player> myPlayerList = playerRepo.findPlayersByName(name);
+//        if(myPlayerList.isEmpty()){
+//            throw new FetchNotFoundException("Player: ", new Player());
+//        }
+//        return myPlayerList;
+//    }
     public Player saveNewPlayer(String playerData){
 
         String[] playerInfo = playerData.split(",");

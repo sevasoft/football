@@ -40,7 +40,7 @@ public class TeamRestController {
         }
         return myResponse;
     }
-    @GetMapping("/teams/{teamName}")
+    @GetMapping("/teams/by_name/{teamName}")
     public ResponseEntity<Team> findTeamByName(@PathVariable String teamName) throws FetchNotFoundException {
         ResponseEntity<Team> myResponse;
         try {

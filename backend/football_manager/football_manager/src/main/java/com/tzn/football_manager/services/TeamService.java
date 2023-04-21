@@ -1,5 +1,6 @@
 package com.tzn.football_manager.services;
 
+import com.tzn.football_manager.entities.Player;
 import com.tzn.football_manager.entities.Team;
 import com.tzn.football_manager.repos.TeamRepo;
 import org.hibernate.FetchNotFoundException;
@@ -74,10 +75,10 @@ public class TeamService {
         teamRepo.deleteById(teamId);
     }
     public void deleteAllTeams () throws FetchNotFoundException{
-//        List<Team> teams = teamRepo.findAll();
-//        if(teamRepo.findAll().isEmpty()){
-//            throw new FetchNotFoundException("There are no teams in the list", teams);
-//        }
+        List<Team> teams = teamRepo.findAll();
+        if(teamRepo.findAll().isEmpty()){
+            throw new FetchNotFoundException("There are no teams in the list", teams);
+        }
         teamRepo.deleteAll();
     }
 }

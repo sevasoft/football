@@ -39,7 +39,7 @@ public class PlayerRestController {
         }
         return myResponse;
     }
-    @GetMapping("/players/{playerName}")
+    @GetMapping("/players/by_name/{playerName}")
     public ResponseEntity<Player> findPlayerByName(@PathVariable String playerName) throws FetchNotFoundException {
         ResponseEntity<Player> myResponse;
         try {
@@ -49,6 +49,17 @@ public class PlayerRestController {
         }
         return myResponse;
     }
+
+//    @GetMapping("/players/by_name_list/{playerName}")
+//    public List<Player> findPlayerByName(@PathVariable String playerName) throws FetchNotFoundException {
+//        List<Player> myResponse = playerService.findPlayersByName(playerName) ;
+////        try {
+////            myResponse = new ResponseEntity<>(playerService.findPlayersByName(playerName), HttpStatus.OK);
+////        } catch (FetchNotFoundException e) {
+////            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+////        }
+//        return myResponse;
+//    }
 
     @PostMapping("/players")
     public ResponseEntity<Player> saveNewPlayer(@RequestBody String playerData) {
