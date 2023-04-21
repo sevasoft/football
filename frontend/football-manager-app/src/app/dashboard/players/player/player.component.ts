@@ -7,5 +7,5 @@ import { Player } from '../../../shared/player';
   styleUrls: ['./player.component.css'],
 })
 export class PlayerComponent {
-  // @Input() player: Player;
+  @Input() player: Player;
 }

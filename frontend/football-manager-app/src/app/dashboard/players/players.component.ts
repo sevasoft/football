@@ -7,5 +7,5 @@ import { Player } from 'src/app/shared/player';
   styleUrls: ['./players.component.css'],
 })
 export class PlayersComponent {
-  // @Input() players: Player[];
+  @Input() players: Player[];
 }

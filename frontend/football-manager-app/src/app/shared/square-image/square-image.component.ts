@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./square-image.component.css'],
 })
 export class SquareImageComponent {
-  // @Input() src: string;
-  // @Input() alt: string;
+  @Input() src: string | undefined;
+  @Input() alt: string | undefined;
 }
