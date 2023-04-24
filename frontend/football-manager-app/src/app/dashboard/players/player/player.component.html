@@ -6,11 +6,18 @@
   <p class="text-base leading-7 text-gray-600">{{ player.team.teamName }}</p>
   <p class="text-base leading-7 text-gray-600">{{ player.birthYear }}</p>
   <div>
-    <button type="button"
-      class="rounded bg-indigo-600 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-      Edit</button>
-    <button type="button"
-      class="rounded bg-indigo-600 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-      Delete</button>
+    <button
+      type="button"
+      class="rounded bg-indigo-600 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+    >
+      Edit
+    </button>
+    <button
+      type="button"
+      (click)="deletePlayer()"
+      class="rounded bg-indigo-600 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+    >
+      Delete
+    </button>
   </div>
 </section>

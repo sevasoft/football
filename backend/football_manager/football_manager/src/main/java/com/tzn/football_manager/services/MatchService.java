@@ -1,8 +1,6 @@
 package com.tzn.football_manager.services;
 
 import com.tzn.football_manager.entities.Match;
-import com.tzn.football_manager.entities.Player;
-import com.tzn.football_manager.entities.Team;
 import com.tzn.football_manager.repos.MatchRepo;
 import org.hibernate.FetchNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +28,11 @@ public class MatchService {
         }
         return myMatch.get();
     }
-//    public Match findMatchByName(String name) throws FetchNotFoundException {
-//        Optional<Match> myMatch = matchRepo.findByName(name);
-//        if(myMatch.isEmpty()){
-//            throw new FetchNotFoundException("Match: ", new Match());
-//        }
-//        return myMatch.get();
-//    }
+    public Match findMatchByTeamName(String name) throws FetchNotFoundException {
+        Optional<Match> myMatch = matchRepo.findByTeamName(name);
+        if(myMatch.isEmpty()){
+            throw new FetchNotFoundException("Match: ", new Match());
+        }
+        return myMatch.get();
+    }
 }

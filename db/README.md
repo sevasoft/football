@@ -105,3 +105,21 @@ CREATE TABLE matches (
   team1_goals integer NOT NULL,
   team2_goals integer NOT NULL
 );
+
+Dummy data voor de matches:
+INSERT INTO teams (club_name, established_in, is_international)
+VALUES ('Real Madrid', 1902, FALSE),
+       ('Barcelona', 1899, FALSE),
+       ('Manchester United', 1878, FALSE),
+       ('Liverpool', 1892, FALSE),
+       ('Juventus', 1897, FALSE),
+       ('Bayern Munich', 1900, FALSE),
+       ('Paris Saint-Germain', 1970, FALSE),
+       ('Ajax', 1900, FALSE);
+
+INSERT INTO matches (team1_name, team2_name, team1_goals, team2_goals)
+VALUES 
+('Manchester United', 'Real Madrid', 2, 1),
+('Barcelona', 'Liverpool', 0, 2),
+('Real Madrid', 'Liverpool', 1, 1),
+('Manchester United', 'Barcelona', 3, 1);

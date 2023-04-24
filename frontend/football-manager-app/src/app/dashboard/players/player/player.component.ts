@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Player } from '../../../shared/player';
-import { PlayersService } from '../players.service';
+import { PlayerService } from './player.service';
 
 @Component({
   selector: 'fm-player',
@@ -8,12 +8,16 @@ import { PlayersService } from '../players.service';
   styleUrls: ['./player.component.css'],
 })
 export class PlayerComponent {
-  data: any
+  data: any;
   @Input() player: Player;
 
-  constructor(private playerService: PlayersService) {}
+  constructor(private playerService: PlayerService) { }
 
-  // ngOnInit() {
-  //   this.data = this.playerService.postPlayerByID();
-  // }
+  addPlayer(player: string) {
+    this.playerService.add(player);
+  }
+
+  deletePlayer() {
+    this.playerService.delete(this.player.id.toString());
+  }
 }
