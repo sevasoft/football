@@ -35,7 +35,7 @@ public class MatchService {
         return myMatch.get();
     }
     public Match findMatchByTeamName(String name) throws FetchNotFoundException {
-        Optional<Match> myMatch = matchRepo.findByTeamName(name);
+        Optional<Match> myMatch = matchRepo.findByTeam1OrTeam2(name);
         if(myMatch.isEmpty()){
             throw new FetchNotFoundException("Match: ", new Match());
         }
