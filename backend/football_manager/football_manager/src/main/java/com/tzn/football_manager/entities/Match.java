@@ -2,7 +2,6 @@ package com.tzn.football_manager.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.util.Date;
 
 @Data

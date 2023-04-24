@@ -11,7 +11,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,7 +49,7 @@ public class MatchService {
 
 
 
-    public Match saveNewMatch(String matchData){
+    public Match saveNewMatch(String matchData) throws ParseException {
 
         String[] matchInfo = matchData.split(",");
         Match match = new Match();
@@ -54,6 +57,10 @@ public class MatchService {
         match.setTeam2(matchInfo[1]);
         match.setGoalsTeam1(Integer.parseInt(matchInfo[2]));
         match.setGoalsTeam2(Integer.parseInt(matchInfo[3]));
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        match.setMatchDate(dateFormat.parse(matchInfo[4]));
 
         return matchRepo.save(match);
     }
