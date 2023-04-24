@@ -1,17 +1,14 @@
 import { Component, Input } from '@angular/core';
-import { Team } from '../../../shared/team';
-
+import { Team } from '../../shared/team';
 
 @Component({
   selector: 'fm-team',
   templateUrl: './team.component.html',
-  styleUrls: ['./team.component.css']
+  styleUrls: ['./team.component.css'],
 })
 export class TeamComponent {
-  data: any
+  data: any;
   @Input() team: Team;
 
   // constructor(private teamService: TeamsService) {}
-
-  
 }
