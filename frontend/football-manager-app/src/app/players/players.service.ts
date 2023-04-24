@@ -56,6 +56,8 @@ export class PlayersService {
    * @param id Id of the player.
    */
   deletePlayerById(id: string): any {
-    return axios.delete(`http://localhost:8080/players/${id}`);
+    axios.delete(`http://localhost:8080/players/${id}`);
+    // TODO: search for a better solution to rerender page like in React.
+    window.location.reload();
   }
 }
