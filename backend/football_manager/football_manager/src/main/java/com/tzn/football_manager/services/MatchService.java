@@ -67,16 +67,38 @@ public class MatchService {
 
     public Match updateMatch(Long matchId, String updatedMatchData) throws ResponseStatusException {
         Match existingMatch = matchRepo.findById(matchId).orElse(null);
-
+        if (existingMatch == null) {
+            return null;
+        }
         String[] updatedMatchInfo = updatedMatchData.split(",");
 
         // bijwerken van de player gegevens
-        existingMatch.setTeam1(updatedMatchInfo[0]);
-        existingMatch.setTeam1(updatedMatchInfo[1]);
-        existingMatch.setGoalsTeam1(Integer.parseInt(updatedMatchInfo[2]));
-        existingMatch.setGoalsTeam1(Integer.parseInt(updatedMatchInfo[3]));
+        for (String field : updatedMatchInfo) {
+            String[] keyValue = field.split(":");
+            String key = keyValue[0];
+            String value = keyValue[1];
 
-        // opslaan van de bijgewerkte gegevens en retourneren van het bijgewerkte matchobject
+//            Door gebruik te maken van de switch kan je bijvoorbeeld "goalsTeam1:2" opgeven
+//            Dit zou de "GoalsTeam1" van de match bijwerken, terwijl de rest ongewijzigd blijft.
+            switch (key) {
+                case "team1":
+                    existingMatch.setTeam1(value);
+                    break;
+                case "team2":
+                    existingMatch.setTeam2(value);
+                    break;
+                case "goalsTeam1":
+                    existingMatch.setGoalsTeam1(Integer.parseInt(value));
+                    break;
+                case "goalsTeam2":
+                    existingMatch.setGoalsTeam2(Integer.parseInt(value));
+                    break;
+                default:
+                    throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid field: " + key);
+            }
+        }
+
+//        opslaan van de bijgewerkte gegevens en retourneren van het bijgewerkte matchobject
         return matchRepo.save(existingMatch);
     }
 

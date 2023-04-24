@@ -99,7 +99,7 @@ public class PlayerService {
                     throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid field: " + key);
             }
         }
-        // opslaan van de bijgewerkte gegevens en retourneren van het bijgewerkte playerobject
+//      opslaan van de bijgewerkte gegevens en retourneren van het bijgewerkte playerobject
         return playerRepo.save(existingPlayer);
     }
 
