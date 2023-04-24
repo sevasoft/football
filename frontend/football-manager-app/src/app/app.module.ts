@@ -10,8 +10,6 @@ import { MatchComponent } from './matches/match/match.component';
 @NgModule({
   declarations: [
     AppComponent,
-    MatchesComponent,
-    MatchComponent
   ],
   imports: [
     BrowserModule,
