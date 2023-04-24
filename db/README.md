@@ -103,10 +103,12 @@ CREATE TABLE matches (
   team1_name varchar(255) NOT NULL,
   team2_name varchar(255) NOT NULL,
   team1_goals integer NOT NULL,
-  team2_goals integer NOT NULL
+  team2_goals integer NOT null,
+  date_match Date not null
 );
 
 Dummy data voor de matches:
+
 INSERT INTO teams (club_name, established_in, is_international)
 VALUES ('Real Madrid', 1902, FALSE),
        ('Barcelona', 1899, FALSE),
