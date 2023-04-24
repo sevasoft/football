@@ -119,9 +119,9 @@ VALUES ('Real Madrid', 1902, FALSE),
        ('Paris Saint-Germain', 1970, FALSE),
        ('Ajax', 1900, FALSE);
 
-INSERT INTO matches (team1_name, team2_name, team1_goals, team2_goals)
+INSERT INTO matches (team1_name, team2_name, team1_goals, team2_goals, date_match)
 VALUES 
-('Manchester United', 'Real Madrid', 2, 1),
-('Barcelona', 'Liverpool', 0, 2),
-('Real Madrid', 'Liverpool', 1, 1),
-('Manchester United', 'Barcelona', 3, 1);
+('Manchester United', 'Real Madrid', 2, 1,'2022-04-23'),
+('Barcelona', 'Liverpool', 0, 2,'2021-04-23'),
+('Real Madrid', 'Liverpool', 1, 1,'2020-04-23'),
+('Manchester United', 'Barcelona', 3, 1,'2019-04-23');
