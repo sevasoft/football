@@ -7,53 +7,51 @@ import axios from 'axios';
 export class TeamsService {
   constructor() { }
 
+  /**
+   * @param team New team to add. Pay attention to the string value (without spaces).
+   *
+   * Example: simons,2003,null
+   *
+   * Example: simons,2003,1
+   */
+  addTeam(team: string): any {
+    return axios.post('http://localhost:8080/teams', team, {
+      headers: {
+        'Content-Type': 'text/plain',
+      },
+    });
+  }
+
+  /**
+   * Retrieves a list of all the teamss in the database.
+   */
   getTeams(): any {
-    return (
-      axios
-        // .get('https://dummyjson.com/todos')
-        .get('http://localhost:8080/players')
-    );
-    // .then((response) => {
-    //   data = response.data;
-    //   console.log(data);
-    // })
-    // .catch((error) => {
-    //   console.log(error);
-    // });
-
-    // return data;
+    return axios.get('http://localhost:8080/teams');
   }
 
-  getTeamByID(): any {
-    let data: any;
-
-    axios
-      // .get('https://dummyjson.com/todos')
-      .get('http://localhost:8080/players/{playerID}')
-      .then((response) => {
-        data = response.data;
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    return data;
+  /**
+   * Retrieves the team with the passed ID if it exists.
+   *
+   * @param id Id of the team.
+   */
+  getTeamById(id: string): any {
+    return axios.get(`http://localhost:8080/teams/${id}`);
   }
 
-  postTeamByID(playerID: number, playerData: any): any {
-    let data: any;
+/**
+   * @param id Id of the team.
+   * @param team Team data to update. Pay attention to the string value (without spaces).
+   *
+   * Example: updateTeamById(1, 'simons,2003,1')
+   */
+updateTeamById(id: string, team: string): any {
+  let data: any;
 
-    axios
-      .post(`http://localhost:8080/players/${playerID}`, playerData)
-      .then((response) => {
-        data = response.data;
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  axios.put(`http://localhost:8080/teams/${id}`, team, {
+    headers: { 'Content-Type': 'text/plain' },
+  });
 
-    return data;
-  }
+  return data;
 }
+}
+
