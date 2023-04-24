@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TeamsComponent } from './teams.component';
 import { TeamComponent } from './team/team.component';
+import { TeamsRoutingModule } from './teams-routing.module';
 
 
 
@@ -11,7 +12,8 @@ import { TeamComponent } from './team/team.component';
     TeamComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    TeamsRoutingModule
   ],
   exports: [
     TeamsComponent

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatchesComponent } from './matches.component';
 import { MatchComponent } from './match/match.component';
+import { MatchesRoutingModule } from './matches-routing.module';
 
 
 
@@ -11,7 +12,8 @@ import { MatchComponent } from './match/match.component';
     MatchComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatchesRoutingModule
   ],
   exports: [
     MatchesComponent
