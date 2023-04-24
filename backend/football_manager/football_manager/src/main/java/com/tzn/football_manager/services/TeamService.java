@@ -31,7 +31,7 @@ public class TeamService {
         return myTeam.get();
     }
     public Team findTeamByName(String name) throws FetchNotFoundException {
-        Optional<Team> myTeam = teamRepo.findByName(name);
+        Optional<Team> myTeam = teamRepo.findByTeamName(name);
         if(myTeam.isEmpty()){
             throw new FetchNotFoundException("Team: ", new Team());
         }
