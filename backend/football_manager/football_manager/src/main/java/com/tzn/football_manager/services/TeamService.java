@@ -1,6 +1,5 @@
 package com.tzn.football_manager.services;
 
-import com.tzn.football_manager.entities.Player;
 import com.tzn.football_manager.entities.Team;
 import com.tzn.football_manager.repos.TeamRepo;
 import org.hibernate.FetchNotFoundException;

@@ -40,6 +40,16 @@ export class MatchesService {
   }
 
   /**
+ * Retrieves the match with the passed ID if it exists.
+ *
+ * @param name Name of one the team.
+ */
+  getMatchByTeamName(id: string): any {
+    console.log(id);
+    return axios.get(`http://localhost:8080/matches/${name}`);
+  }
+
+  /**
    * @param id Id of the player.
    * @param match match data to update. Pay attention to the string value (without spaces).
    *

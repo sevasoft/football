@@ -1,10 +1,7 @@
 package com.tzn.football_manager.services;
 
 import com.tzn.football_manager.entities.Match;
-import com.tzn.football_manager.entities.Player;
-import com.tzn.football_manager.entities.Team;
 import com.tzn.football_manager.repos.MatchRepo;
-import com.tzn.football_manager.repos.TeamRepo;
 import org.hibernate.FetchNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +11,6 @@ import org.springframework.web.server.ResponseStatusException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 

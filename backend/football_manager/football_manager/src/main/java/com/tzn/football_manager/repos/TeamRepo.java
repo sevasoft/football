@@ -1,6 +1,5 @@
 package com.tzn.football_manager.repos;
 
-import com.tzn.football_manager.entities.Player;
 import com.tzn.football_manager.entities.Team;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

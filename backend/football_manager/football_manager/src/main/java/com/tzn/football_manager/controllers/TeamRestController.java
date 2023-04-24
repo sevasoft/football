@@ -2,7 +2,6 @@ package com.tzn.football_manager.controllers;
 
 import java.util.List;
 
-import com.tzn.football_manager.entities.Player;
 import org.hibernate.FetchNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

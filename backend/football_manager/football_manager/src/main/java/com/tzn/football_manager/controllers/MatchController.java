@@ -1,7 +1,6 @@
 package com.tzn.football_manager.controllers;
 
 import com.tzn.football_manager.entities.Match;
-import com.tzn.football_manager.entities.Player;
 import com.tzn.football_manager.services.MatchService;
 import org.hibernate.FetchNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
