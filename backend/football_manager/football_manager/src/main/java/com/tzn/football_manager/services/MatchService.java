@@ -78,8 +78,8 @@ public class MatchService {
             String key = keyValue[0];
             String value = keyValue[1];
 
-//            Door gebruik te maken van de switch kan je bijvoorbeeld "goalsTeam1:2" opgeven
-//            Dit zou de "GoalsTeam1" van de match bijwerken, terwijl de rest ongewijzigd blijft.
+//            Door gebruik te maken van de switch kan je bijvoorbeeld "team1:DeMietjes,goalsTeam1:5" opgeven
+//            Dit zou de "team1" & "GoalsTeam1" van de match bijwerken, terwijl de rest ongewijzigd blijft.
             switch (key) {
                 case "team1":
                     existingMatch.setTeam1(value);
