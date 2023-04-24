@@ -17,9 +17,6 @@ public class Match {
     @Column(name = "team_2")
     String team2;
 
-//    @Column(name = "match_name")
-//    String matchName = team1 + " vs. "  + team2;
-
     @Column(name = "goals_team1")
     int goalsTeam1;
 
