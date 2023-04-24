@@ -4,7 +4,7 @@ import { PlayersService } from '../players.service';
 @Injectable({
   providedIn: 'root',
 })
-export class PlayerService {
+export class PlayersListService {
   constructor(private playersService: PlayersService) {}
 
   add(player: string) {
