@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Match } from 'src/app/shared/match';
+import { MatchService } from './match.service';
 
 @Component({
   selector: 'fm-match',
@@ -12,7 +13,7 @@ export class MatchComponent {
 
   constructor(private matchService: MatchService) { }
 
-  addMatch(player: string) {
+  addMatch(match: string) {
     this.matchService.add(match);
   }
 

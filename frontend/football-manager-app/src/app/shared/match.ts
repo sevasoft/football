@@ -1,2 +1,6 @@
-export interface Match {
-}
+   export interface Match {
+    id: number;
+
+
+  }
+
