@@ -35,6 +35,7 @@ export class PlayersService {
    * @param id Id of the player.
    */
   getPlayerById(id: string): any {
+    console.log(id);
     return axios.get(`http://localhost:8080/players/${id}`);
   }
 

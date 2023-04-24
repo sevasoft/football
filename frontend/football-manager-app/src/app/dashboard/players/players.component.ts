@@ -16,11 +16,21 @@ export class PlayersComponent implements OnInit {
     // For testing. Feel free to replace the service functions to the right places in the code base.
     // (STRING)player_name,(INT)year_of_birth,(INT)team_id
     this.playerService
-      .addPlayer('simons,2003,null')
+      .addPlayer('simons,2003,2')
       .then((response: any) => {
         console.log(response.data);
       })
       .catch((error: any) => {
+        console.log(error);
+      });
+
+    this.playerService
+      .updatePlayerById('2', 'luuk de jong,1990,3')
+      .then((response: any) => {
+        console.log(response.data);
+      })
+      .catch((error: any) => {
+        console.log('Error updatePlayerById');
         console.log(error);
       });
 
@@ -31,6 +41,18 @@ export class PlayersComponent implements OnInit {
         console.log(this.data);
       })
       .catch((error: any) => {
+        console.log('Error getPlayers');
+        console.log(error);
+      });
+
+    this.playerService
+      .getPlayerById('1')
+      .then((response: any) => {
+        console.log('Run getPlayerById');
+        console.log(response.data);
+      })
+      .catch((error: any) => {
+        console.log('Error getPlayerById');
         console.log(error);
       });
   }
