@@ -81,7 +81,7 @@ public class PlayerService {
             String value = keyValue[1];
 
 //            Door gebruik te maken van de switch kan je bijvoorbeeld "name:Johan Cruijff,year_of_birth:1947" opgeven
-//            Dit zou de naam en geboortejaar van de speler bijwerken, terwijl het team ongewijzigd blijft.
+//            Dit zou de "name" en "year_of_birth" van de speler bijwerken, terwijl het "team_id" ongewijzigd blijft.
             switch (key) {
                 case "name":
                     existingPlayer.setName(value);
@@ -99,7 +99,6 @@ public class PlayerService {
                     throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid field: " + key);
             }
         }
-
         // opslaan van de bijgewerkte gegevens en retourneren van het bijgewerkte playerobject
         return playerRepo.save(existingPlayer);
     }
