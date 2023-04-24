@@ -7,10 +7,10 @@ const routes: Routes = [
     path: '',
     component: HomeComponent
   }, {
-    path: 'dashboard',
+    path: 'matches',
     loadChildren: () =>
-      import('./dashboard/dashboard.module')
-        .then(m => m.DashboardModule)
+      import('./matches/matches.module')
+        .then(m => m.MatchesModule)
   }
 ];
 
