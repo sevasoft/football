@@ -4,3 +4,7 @@
     padding: 8px;
     box-sizing: border-box;
 }
+
+section {
+    margin: 80px 300px 0px 300px;
+}
