@@ -63,7 +63,7 @@ public class TeamService {
             String key = keyValue[0];
             String value = keyValue[1];
 
-//            Door gebruik te maken van de switch kan je bijvoorbeeld "name:FC Nagele,year_of_birth:1957" opgeven
+//            Door gebruik te maken van de switch kan je bijvoorbeeld "club_name:FC Nagele,established_in:1957" opgeven
 //            Dit zou de club_name en established_in van de speler bijwerken, terwijl het "is_international" ongewijzigd blijft.
             switch (key) {
                 case "club_name":

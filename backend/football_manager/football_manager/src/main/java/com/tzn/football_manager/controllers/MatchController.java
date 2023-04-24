@@ -9,7 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class MatchController {
@@ -31,19 +33,28 @@ public class MatchController {
         }
         return myResponse;
     }
+//    @GetMapping("/matches/by_name/{matchName}")
+//    public ResponseEntity<List<Match>> findMatchByTeamName(@PathVariable String matchName) throws FetchNotFoundException {
+//        ResponseEntity<List<Match>> myResponse;
+//        try {
+//            myResponse = new ResponseEntity<>(matchService.findMatchByTeamName(matchName), HttpStatus.OK);
+//        } catch (FetchNotFoundException e) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//        return myResponse;
+//    }
     @GetMapping("/matches/by_name/{matchName}")
-    public ResponseEntity<Match> findMatchByTeamName(@PathVariable String matchName) throws FetchNotFoundException {
-        ResponseEntity<Match> myResponse;
-        try {
-            myResponse = new ResponseEntity<>(matchService.findMatchByTeamName(matchName), HttpStatus.OK);
-        } catch (FetchNotFoundException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<List<Match>> findMatchByTeamName(@PathVariable String matchName) {
+        Optional<List<Match>> matches = matchService.findMatchByTeamName(matchName);
+        if (matches.isEmpty()) {
+            return ResponseEntity.notFound().build();
         }
-        return myResponse;
+        return ResponseEntity.ok(matches.get());
     }
 
+
     @PostMapping("/matches")
-    public ResponseEntity<Match> saveNewMatch(@RequestBody String matchData) {
+    public ResponseEntity<Match> saveNewMatch(@RequestBody String matchData) throws ParseException {
         Match match = matchService.saveNewMatch(matchData);
         return new ResponseEntity<Match>(match, HttpStatus.OK);
     }

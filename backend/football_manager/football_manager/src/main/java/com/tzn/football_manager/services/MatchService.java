@@ -11,6 +11,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,15 +38,18 @@ public class MatchService {
         }
         return myMatch.get();
     }
-    public Match findMatchByTeamName(String name) throws FetchNotFoundException {
-        Optional<Match> myMatch = matchRepo.findByTeam1OrTeam2(name);
-        if(myMatch.isEmpty()){
-            throw new FetchNotFoundException("Match: ", new Match());
+
+    public Optional<List<Match>> findMatchByTeamName(String name) throws FetchNotFoundException {
+        Optional<List<Match>> matches = matchRepo.findByTeam1OrTeam2(name);
+        if(matches.isEmpty()){
+            throw new FetchNotFoundException("Matches not found for team name: " + name, new ArrayList<>());
         }
-        return myMatch.get();
+        return matchRepo.findByTeam1OrTeam2(name);
     }
 
-    public Match saveNewMatch(String matchData){
+
+
+    public Match saveNewMatch(String matchData) throws ParseException {
 
         String[] matchInfo = matchData.split(",");
         Match match = new Match();
@@ -50,6 +57,10 @@ public class MatchService {
         match.setTeam2(matchInfo[1]);
         match.setGoalsTeam1(Integer.parseInt(matchInfo[2]));
         match.setGoalsTeam2(Integer.parseInt(matchInfo[3]));
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        match.setMatchDate(dateFormat.parse(matchInfo[4]));
 
         return matchRepo.save(match);
     }
