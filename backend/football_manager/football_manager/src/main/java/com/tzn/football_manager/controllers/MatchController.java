@@ -1,14 +1,13 @@
 package com.tzn.football_manager.controllers;
 
 import com.tzn.football_manager.entities.Match;
+import com.tzn.football_manager.entities.Player;
 import com.tzn.football_manager.services.MatchService;
 import org.hibernate.FetchNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,7 +31,7 @@ public class MatchController {
         }
         return myResponse;
     }
-    @GetMapping("/matches/{matchName}")
+    @GetMapping("/matches/by_name/{matchName}")
     public ResponseEntity<Match> findMatchByTeamName(@PathVariable String matchName) throws FetchNotFoundException {
         ResponseEntity<Match> myResponse;
         try {
@@ -42,8 +41,29 @@ public class MatchController {
         }
         return myResponse;
     }
-//    @PostMapping("/matches/{team1_ID}/{team2_ID}")
-//    public ResponseEntity<Match> playAMatch(@PathVariable long team1_ID, @PathVariable long team2_ID){
-//
-//    }
+
+    @PostMapping("/matches")
+    public ResponseEntity<Match> saveNewMatch(@RequestBody String matchData) {
+        Player match = matchService.saveNewMatch(matchData);
+        return new ResponseEntity<Match>(match, HttpStatus.OK);
+    }
+
+    @PutMapping("/matches/{matchID}")
+    public ResponseEntity<Match> updateMatch(@PathVariable long matchID, @RequestBody String updateMatchData) {
+        Match matchToBeUpdated = matchService.updateMatch(matchID, updateMatchData);
+        return new ResponseEntity<Match>(matchToBeUpdated, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/matches")
+    public ResponseEntity<Match> deleteAllMatch() {
+        System.out.println("method called");
+        matchService.deleteAllmatches();
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/matches/{matchID}")
+    public ResponseEntity<Match> deleteMatchByID(@PathVariable Long matchID) {
+        matchService.deleteMatchByID(matchID);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
