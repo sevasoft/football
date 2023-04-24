@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,13 +35,16 @@ public class MatchService {
         }
         return myMatch.get();
     }
-    public Match findMatchByTeamName(String name) throws FetchNotFoundException {
-        Optional<Match> myMatch = matchRepo.findByTeam1OrTeam2(name);
-        if(myMatch.isEmpty()){
-            throw new FetchNotFoundException("Match: ", new Match());
+
+    public Optional<List<Match>> findMatchByTeamName(String name) throws FetchNotFoundException {
+        Optional<List<Match>> matches = matchRepo.findByTeam1OrTeam2(name);
+        if(matches.isEmpty()){
+            throw new FetchNotFoundException("Matches not found for team name: " + name, new ArrayList<>());
         }
-        return myMatch.get();
+        return matchRepo.findByTeam1OrTeam2(name);
     }
+
+
 
     public Match saveNewMatch(String matchData){
 

@@ -17,6 +17,6 @@ public interface MatchRepo extends JpaRepository <Match, Long> {
     Optional<Match> findById(Long matchID);
 
     @Query("SELECT m FROM Match m WHERE m.team1 = :teamName OR m.team2 = :teamName")
-    Optional<Match> findByTeam1OrTeam2(@Param("teamName") String teamName);
+    Optional<List<Match>> findByTeam1OrTeam2(@Param("teamName") String teamName);
 
 }
