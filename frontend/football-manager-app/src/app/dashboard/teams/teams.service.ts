@@ -7,7 +7,7 @@ import axios from 'axios';
 export class TeamsService {
   constructor() {}
 
-  getTeamss(): any {
+  getTeams(): any {
     return (
       axios
         // .get('https://dummyjson.com/todos')
