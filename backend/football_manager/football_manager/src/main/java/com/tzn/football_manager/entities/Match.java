@@ -8,8 +8,7 @@ import lombok.Data;
 @Entity
 public class Match {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "match_id_seq")
-    @SequenceGenerator(name = "match_id_seq", sequenceName = "match_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     @Column(name = "team_1")
