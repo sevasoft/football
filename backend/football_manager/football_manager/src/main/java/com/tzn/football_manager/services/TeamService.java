@@ -5,7 +5,9 @@ import com.tzn.football_manager.entities.Team;
 import com.tzn.football_manager.repos.TeamRepo;
 import org.hibernate.FetchNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -56,9 +58,27 @@ public class TeamService {
         String[] updatedTeamInfo = updatedTeamData.split(",");
 
         // bijwerken van de teamgegevens
-        existingTeam.setName(updatedTeamInfo[0]);
-        existingTeam.setEstablishedIn(Integer.parseInt(updatedTeamInfo[1]));
-        existingTeam.setInternational(Boolean.parseBoolean(updatedTeamInfo[2]));
+        for (String field : updatedTeamInfo) {
+            String[] keyValue = field.split(":");
+            String key = keyValue[0];
+            String value = keyValue[1];
+
+//            Door gebruik te maken van de switch kan je bijvoorbeeld "name:FC Nagele,year_of_birth:1957" opgeven
+//            Dit zou de club_name en established_in van de speler bijwerken, terwijl het "is_international" ongewijzigd blijft.
+            switch (key) {
+                case "club_name":
+                    existingTeam.setName(value);
+                    break;
+                case "established_in":
+                    existingTeam.setEstablishedIn(Integer.parseInt(value));
+                    break;
+                case "is_international":
+                    Boolean isInternational = Boolean.parseBoolean(value);
+                    break;
+                default:
+                    throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid field: " + key);
+            }
+        }
 
         // opslaan van de bijgewerkte gegevens en retourneren van het bijgewerkte teamobject
         return teamRepo.save(existingTeam);
