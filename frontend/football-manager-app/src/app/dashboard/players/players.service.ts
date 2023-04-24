@@ -7,52 +7,49 @@ import axios from 'axios';
 export class PlayersService {
   constructor() {}
 
+  /**
+   * @param player New player to add. Pay attention to the string value (without spaces).
+   *
+   * Example: simons,2003,null
+   *
+   * Example: simons,2003,1
+   */
+  addPlayer(player: string): any {
+    return axios.post('http://localhost:8080/players', player, {
+      headers: {
+        'Content-Type': 'text/plain',
+      },
+    });
+  }
+
+  /**
+   * Retrieves a list of all the players in the database.
+   */
   getPlayers(): any {
-    return (
-      axios
-        // .get('https://dummyjson.com/todos')
-        .get('http://localhost:8080/players')
-    );
-    // .then((response) => {
-    //   data = response.data;
-    //   console.log(data);
-    // })
-    // .catch((error) => {
-    //   console.log(error);
-    // });
-
-    // return data;
+    return axios.get('http://localhost:8080/players');
   }
 
-  getPlayerByID(): any {
-    let data: any;
-
-    axios
-      // .get('https://dummyjson.com/todos')
-      .get('http://localhost:8080/players/{playerID}')
-      .then((response) => {
-        data = response.data;
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    return data;
+  /**
+   * Retrieves the player with the passed ID if it exists.
+   *
+   * @param id Id of the player.
+   */
+  getPlayerById(id: string): any {
+    return axios.get(`http://localhost:8080/players/${id}`);
   }
 
-  postPlayerByID(playerID: number, playerData: any): any {
+  /**
+   * @param id Id of the player.
+   * @param player Player data to update. Pay attention to the string value (without spaces).
+   *
+   * Example: updatePlayerById(1, 'simons,2003,1')
+   */
+  updatePlayerById(id: string, player: string): any {
     let data: any;
 
-    axios
-      .post(`http://localhost:8080/players/${playerID}`, playerData)
-      .then((response) => {
-        data = response.data;
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    axios.put(`http://localhost:8080/players/${id}`, player, {
+      headers: { 'Content-Type': 'text/plain' },
+    });
 
     return data;
   }

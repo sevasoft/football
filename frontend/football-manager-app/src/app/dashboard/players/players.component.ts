@@ -13,6 +13,17 @@ export class PlayersComponent implements OnInit {
   constructor(private playerService: PlayersService) {}
 
   ngOnInit() {
+    // For testing. Feel free to replace the service functions to the right places in the code base.
+    // (STRING)player_name,(INT)year_of_birth,(INT)team_id
+    this.playerService
+      .addPlayer('simons,2003,null')
+      .then((response: any) => {
+        console.log(response.data);
+      })
+      .catch((error: any) => {
+        console.log(error);
+      });
+
     this.data = this.playerService
       .getPlayers()
       .then((response: any) => {
