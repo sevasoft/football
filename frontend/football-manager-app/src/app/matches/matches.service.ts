@@ -40,13 +40,13 @@ export class MatchesService {
   }
 
   /**
- * Retrieves the match with the passed ID if it exists.
+ * Retrieves the match with the passed team name if it exists.
  *
- * @param name Name of one the team.
+ * @param teamName Name of one the teams.
  */
-  getMatchByTeamName(id: string): any {
-    console.log(id);
-    return axios.get(`http://localhost:8080/matches/${name}`);
+  getMatchByTeamName(teamName: string): any {
+    console.log(teamName);
+    return axios.get(`http://localhost:8080/matches/by_name/${teamName}`);
   }
 
   /**
@@ -68,6 +68,14 @@ export class MatchesService {
   deleteMatchById(id: string): any {
     axios.delete(`http://localhost:8080/matches/${id}`);
     // TODO: search for a better solution to rerender page like in React.
+    window.location.reload();
+  }
+
+  /**
+ * Retrieves a list of all the matches in the database.
+ */
+  deleteAllMatches(): any {
+    axios.delete('http://localhost:8080/matches');
     window.location.reload();
   }
 }

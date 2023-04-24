@@ -40,6 +40,16 @@ export class PlayersService {
   }
 
   /**
+* Retrieves the players with the passed name if it exists.
+*
+* @param name Name of one the teams.
+*/
+  getPlayerByName(name: string): any {
+    console.log(name);
+    return axios.get(`http://localhost:8080/players/by_name/${name}`);
+  }
+
+  /**
    * @param id Id of the player.
    * @param player Player data to update. Pay attention to the string value (without spaces).
    *
@@ -58,6 +68,14 @@ export class PlayersService {
   deletePlayerById(id: string): any {
     axios.delete(`http://localhost:8080/players/${id}`);
     // TODO: search for a better solution to rerender page like in React.
+    window.location.reload();
+  }
+
+  /**
+* Retrieves a list of all the matches in the database.
+*/
+  deleteAllPlayers(): any {
+    axios.delete('http://localhost:8080/players');
     window.location.reload();
   }
 }

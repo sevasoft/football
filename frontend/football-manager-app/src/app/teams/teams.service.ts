@@ -38,6 +38,16 @@ export class TeamsService {
     return axios.get(`http://localhost:8080/teams/${id}`);
   }
 
+  /**
+* Retrieves the teams with the passed team name if it exists.
+*
+* @param name Name of one the teams.
+*/
+  getTeamByName(name: string): any {
+    console.log(name);
+    return axios.get(`http://localhost:8080/teams/by_name/${name}`);
+  }
+
 /**
    * @param id Id of the team.
    * @param team Team data to update. Pay attention to the string value (without spaces).
@@ -53,5 +63,23 @@ updateTeamById(id: string, team: string): any {
 
   return data;
 }
+
+  /**
+   *
+   * @param id Id of the match.
+   */
+  deleteTeamById(id: string): any {
+    axios.delete(`http://localhost:8080/teams/${id}`);
+    // TODO: search for a better solution to rerender page like in React.
+    window.location.reload();
+  }
+
+  /**
+ * Retrieves a list of all the matches in the database.
+ */
+  deleteAllTeams(): any {
+    axios.delete('http://localhost:8080/teams');
+    window.location.reload();
+  }
 }
 
