@@ -1,6 +1,6 @@
 export interface Team {
   id: number;
-  teamName: string;
+  name: string;
   establishedIn: number;
   international: boolean;
 }
