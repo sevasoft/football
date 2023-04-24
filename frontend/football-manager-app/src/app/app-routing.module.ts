@@ -11,6 +11,16 @@ const routes: Routes = [
     loadChildren: () =>
       import('./matches/matches.module')
         .then(m => m.MatchesModule)
+  }, {
+    path: 'teams',
+    loadChildren: () =>
+      import('./teams/teams.module')
+        .then(m => m.TeamsModule)
+  }, {
+    path: 'players',
+    loadChildren: () =>
+      import('./players/players.module')
+        .then(m => m.PlayersModule)
   }
 ];
 
