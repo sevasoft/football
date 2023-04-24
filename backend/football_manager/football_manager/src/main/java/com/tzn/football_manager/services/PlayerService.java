@@ -75,13 +75,30 @@ public class PlayerService {
         String[] updatedPlayerInfo = updatedPlayerData.split(",");
 
         // bijwerken van de player gegevens
-        existingPlayer.setName(updatedPlayerInfo[0]);
-        existingPlayer.setBirthYear(Integer.parseInt(updatedPlayerInfo[1]));
+        for (String field : updatedPlayerInfo) {
+            String[] keyValue = field.split(":");
+            String key = keyValue[0];
+            String value = keyValue[1];
 
-        Long teamId = Long.parseLong(updatedPlayerInfo[2]);
-        Team team = teamRepo.findById(teamId).orElseThrow(() ->
-                new ResponseStatusException(HttpStatus.BAD_REQUEST, "Team with id " + teamId + " not found"));
-        existingPlayer.setTeam(team);
+//            Door gebruik te maken van de switch kan je bijvoorbeeld "name:Johan Cruijff,year_of_birth:1947" opgeven
+//            Dit zou de naam en geboortejaar van de speler bijwerken, terwijl het team ongewijzigd blijft.
+            switch (key) {
+                case "name":
+                    existingPlayer.setName(value);
+                    break;
+                case "year_of_birth":
+                    existingPlayer.setBirthYear(Integer.parseInt(value));
+                    break;
+                case "team_id":
+                    Long teamId = Long.parseLong(value);
+                    Team team = teamRepo.findById(teamId).orElseThrow(() ->
+                            new ResponseStatusException(HttpStatus.BAD_REQUEST, "Team with id " + teamId + " not found"));
+                    existingPlayer.setTeam(team);
+                    break;
+                default:
+                    throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid field: " + key);
+            }
+        }
 
         // opslaan van de bijgewerkte gegevens en retourneren van het bijgewerkte playerobject
         return playerRepo.save(existingPlayer);
