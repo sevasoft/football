@@ -8,5 +8,10 @@ import { Team } from '../../../shared/team';
   styleUrls: ['./team.component.css']
 })
 export class TeamComponent {
+  data: any
   @Input() team: Team;
+
+  // constructor(private teamService: TeamsService) {}
+
+  
 }
