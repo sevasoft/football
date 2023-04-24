@@ -11,7 +11,7 @@ export class PlayerComponent {
   data: any
   @Input() player: Player;
 
-  constructor(private playerService: PlayersService) {}
+  constructor(private playerService: PlayersService) { }
 
   // ngOnInit() {
   //   this.data = this.playerService.postPlayerByID();
