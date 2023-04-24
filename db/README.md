@@ -97,6 +97,7 @@ BEFORE INSERT ON players
 FOR EACH ROW EXECUTE FUNCTION enforce_player_limit();
 
 And to create the matches table use:
+
 CREATE TABLE matches (
   id serial PRIMARY KEY,
   team1_name varchar(255) NOT NULL,
