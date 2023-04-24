@@ -44,7 +44,7 @@ public class MatchController {
 
     @PostMapping("/matches")
     public ResponseEntity<Match> saveNewMatch(@RequestBody String matchData) {
-        Player match = matchService.saveNewMatch(matchData);
+        Match match = matchService.saveNewMatch(matchData);
         return new ResponseEntity<Match>(match, HttpStatus.OK);
     }
 
@@ -57,7 +57,7 @@ public class MatchController {
     @DeleteMapping("/matches")
     public ResponseEntity<Match> deleteAllMatch() {
         System.out.println("method called");
-        matchService.deleteAllmatches();
+        matchService.deleteAllMatches();
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
