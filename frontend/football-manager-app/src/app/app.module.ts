@@ -6,19 +6,25 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatchesComponent } from './matches/matches.component';
 import { MatchComponent } from './matches/match/match.component';
+import { PlayersModule } from './players/players.module';
+import { MatchesModule } from './matches/matches.module';
+import { TeamsModule } from './teams/teams.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MatchesComponent,
-    MatchComponent
+    // MatchesComponent,
+    // MatchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    PlayersModule,
+    TeamsModule,
+    MatchesModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
