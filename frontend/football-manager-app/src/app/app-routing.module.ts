@@ -7,10 +7,20 @@ const routes: Routes = [
     path: '',
     component: HomeComponent
   }, {
-    path: 'dashboard',
+    path: 'Teams',
     loadChildren: () =>
-      import('./dashboard/dashboard.module')
-        .then(m => m.DashboardModule)
+      import('./teams/teams.module')
+        .then(m => m.TeamsModule)
+  }, {
+    path: 'Players',
+    loadChildren: () =>
+      import('./players/players.module')
+        .then(m => m.PlayersModule)
+  }, {
+    path: 'Matches',
+    loadChildren: () =>
+      import('./matches/matches.module')
+        .then(m => m.MatchesModule)
   }
 ];
 
