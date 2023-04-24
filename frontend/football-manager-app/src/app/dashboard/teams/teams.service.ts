@@ -5,9 +5,9 @@ import axios from 'axios';
   providedIn: 'root',
 })
 export class TeamsService {
-  constructor() {}
+  constructor() { }
 
-  getTeamss(): any {
+  getTeams(): any {
     return (
       axios
         // .get('https://dummyjson.com/todos')
