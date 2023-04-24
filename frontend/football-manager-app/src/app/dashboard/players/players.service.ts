@@ -46,12 +46,16 @@ export class PlayersService {
    * Example: updatePlayerById(1, 'simons,2003,1')
    */
   updatePlayerById(id: string, player: string): any {
-    let data: any;
-
-    axios.put(`http://localhost:8080/players/${id}`, player, {
+    return axios.put(`http://localhost:8080/players/${id}`, player, {
       headers: { 'Content-Type': 'text/plain' },
     });
+  }
 
-    return data;
+  /**
+   *
+   * @param id Id of the player.
+   */
+  deletePlayerById(id: string): any {
+    return axios.delete(`http://localhost:8080/players/${id}`);
   }
 }
