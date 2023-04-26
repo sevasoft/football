@@ -1,6 +1,18 @@
+p {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+img {
+  margin: 1rem auto;
+}
+
+button {
+  margin: 0 5px;
+  width: 70px;
+}
+
 div {
-    display: flex;
-} 
-/* tr{
-    display: table-row;
-} */
+  display: flex;
+  justify-content: center;
+}
