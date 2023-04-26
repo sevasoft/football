@@ -5,6 +5,7 @@ import { PlayerComponent } from './players/player/player.component';
 import { UpdateTeamComponent } from './teams/update-team/update-team.component';
 import { PlayerCreationComponent } from './players/player-creation/player-creation.component';
 import { TeamCreationComponent } from './teams/team-creation/team-creation.component';
+import { EditMatchComponent } from './matches/edit-match/edit-match.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,7 @@ const routes: Routes = [
   // Anders als dit plaats voor de `players/new` dan ziet Angular dit als de dynamische endpoint (:id)
   { path: 'players/:id', component: PlayerComponent },
   { path: 'teams/:id', component: UpdateTeamComponent },
+  { path: 'matches/:id', component: EditMatchComponent },
 ];
 
 @NgModule({
