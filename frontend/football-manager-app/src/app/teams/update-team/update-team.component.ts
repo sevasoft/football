@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UpdateTeamService } from './update-team.service';
 import { UpdateTeamDTO } from 'src/app/shared/updateTeamDTO';
+import { Location } from '@angular/common';
+
 import axios from 'axios';
 
 @Component({
@@ -22,8 +24,9 @@ export class UpdateTeamComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private updateTeamService: UpdateTeamService
-  ) {}
+    private updateTeamService: UpdateTeamService, private _location: Location
+
+  ) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id')!;
@@ -93,4 +96,8 @@ export class UpdateTeamComponent implements OnInit {
         console.error(error);
       });
   }
+  backClicked() {
+    this._location.back();
+  }
+
 }

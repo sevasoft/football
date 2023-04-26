@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DropdownComponent, DropdownValue } from 'src/app/dropdown-component/dropdown-component.component';
 import { TeamsService } from 'src/app/teams/teams.service';
 
+
 @Component({
   selector: 'fm-edit-match',
   templateUrl: './edit-match.component.html',
@@ -24,7 +25,8 @@ export class EditMatchComponent {
   
   
   constructor(
-    private route: ActivatedRoute,
+    private route: ActivatedRoute, 
+
   ) { }
 
   public updateTeam (value: any){
@@ -53,4 +55,5 @@ export class EditMatchComponent {
     const team: string = `team1:${this.team1},established_in:${this.goalsTeam1}`;
     console.log(team);
   }
+
 }

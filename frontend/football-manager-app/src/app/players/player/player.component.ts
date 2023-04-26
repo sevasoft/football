@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PlayerService } from './player.service';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'fm-player',
@@ -15,7 +17,9 @@ export class PlayerComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private playerService: PlayerService
+    private playerService: PlayerService,
+    private _location: Location  
+
   ) {}
 
   ngOnInit() {
@@ -61,5 +65,8 @@ export class PlayerComponent implements OnInit {
       .catch((error: any) => {
         console.error(error);
       });
+  }
+  backClicked() {
+    this._location.back();
   }
 }
