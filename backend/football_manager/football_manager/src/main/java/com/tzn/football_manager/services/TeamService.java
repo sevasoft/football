@@ -65,7 +65,7 @@ public class TeamService {
 //            Door gebruik te maken van de switch kan je bijvoorbeeld "club_name:FC Nagele,established_in:1957" opgeven
 //            Dit zou de club_name en established_in van de speler bijwerken, terwijl het "is_international" ongewijzigd blijft.
             switch (key) {
-                case "club_name":
+                case "name":
                     existingTeam.setName(value);
                     break;
                 case "established_in":
