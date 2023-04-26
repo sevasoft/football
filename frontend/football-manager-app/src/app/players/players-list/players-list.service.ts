@@ -5,7 +5,7 @@ import { PlayersService } from '../players.service';
   providedIn: 'root',
 })
 export class PlayersListService {
-  constructor(private playersService: PlayersService) {}
+  constructor(private playersService: PlayersService) { }
 
   add(player: string) {
     this.playersService
@@ -19,14 +19,16 @@ export class PlayersListService {
   }
 
   delete(id: string) {
-    this.playersService
-      .deletePlayerById(id)
-      .then((response: any) => {
-        console.log(response.data);
-      })
-      .catch((error: any) => {
-        console.error(error);
-      });
+    if (confirm("Do you wish to delete this player?")) {
+      this.playersService
+        .deletePlayerById(id)
+        .then((response: any) => {
+          console.log(response.data);
+        })
+        .catch((error: any) => {
+          console.error(error);
+        });
+    }
   }
 
   update(id: string, player: string) {
