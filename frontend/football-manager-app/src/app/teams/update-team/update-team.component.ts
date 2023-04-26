@@ -7,7 +7,7 @@ import { UpdateTeamService } from './update-team.service';
   templateUrl: './update-team.component.html',
   styleUrls: ['./update-team.component.css'],
 })
-export class TeamCompononent implements OnInit {
+export class UpdateTeamComponent implements OnInit {
   id: string;
   name: string;
   establishedIn: number;
@@ -16,7 +16,7 @@ export class TeamCompononent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private updateTeamService: UpdateTeamService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id')!;
