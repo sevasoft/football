@@ -24,12 +24,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('./players/players.module').then((m) => m.PlayersModule),
   },
-<<<<<<< HEAD
   { path: 'players/:id', component: PlayerComponent },
   { path: 'teams/:id', component: UpdateTeamComponent },
-=======
-  { path: 'players/:id', component: PlayerComponent }
->>>>>>> 0d1ef1f85e905e6d6c0165b8540d6c8b7da04428
 ];
 
 @NgModule({
