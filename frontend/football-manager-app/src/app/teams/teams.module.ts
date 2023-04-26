@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { TeamsComponent } from './teams.component';
 import { TeamComponent } from './team/team.component';
 import { TeamsRoutingModule } from './teams-routing.module';
-import { UpdateTeamComponent } from './update-team/update-team.component';
 
 
 
@@ -11,14 +10,13 @@ import { UpdateTeamComponent } from './update-team/update-team.component';
   declarations: [
     TeamsComponent,
     TeamComponent,
-    UpdateTeamComponent
   ],
   imports: [
     CommonModule,
-    TeamsRoutingModule, UpdateTeamComponent
+    TeamsRoutingModule
   ],
   exports: [
-    TeamsComponent, UpdateTeamComponent
+    TeamsComponent
   ]
 })
 export class TeamsModule { }

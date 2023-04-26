@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TeamService } from './update-team.service';
+import { UpdateTeamService } from './update-team.service';
 
 @Component({
   selector: 'fm-team',
@@ -15,7 +15,7 @@ export class TeamCompononent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private teamService: TeamService
+    private updateTeamService: UpdateTeamService
   ) {}
 
   ngOnInit() {
@@ -28,7 +28,7 @@ export class TeamCompononent implements OnInit {
   }
 
   private getById() {
-    this.teamService
+    this.updateTeamService
       .getById('9')
       .then((response: any) => {
         console.log(response.data);
