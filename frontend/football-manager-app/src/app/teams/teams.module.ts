@@ -15,10 +15,10 @@ import { UpdateTeamComponent } from './update-team/update-team.component';
   ],
   imports: [
     CommonModule,
-    TeamsRoutingModule
+    TeamsRoutingModule, UpdateTeamComponent
   ],
   exports: [
-    TeamsComponent
+    TeamsComponent, UpdateTeamComponent
   ]
 })
 export class TeamsModule { }
