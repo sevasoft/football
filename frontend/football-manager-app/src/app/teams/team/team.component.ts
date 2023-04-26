@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Team } from '../../shared/team';
 import { TeamService } from './team.service';
 
+
 @Component({
   selector: 'fm-team',
   templateUrl: './team.component.html',

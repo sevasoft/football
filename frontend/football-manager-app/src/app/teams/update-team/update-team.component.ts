@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UpdateTeamService } from './update-team.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'fm-update-team',
@@ -15,7 +16,8 @@ export class UpdateTeamComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private updateTeamService: UpdateTeamService
+    private updateTeamService: UpdateTeamService,
+    private _location: Location
   ) { }
 
   ngOnInit() {
@@ -34,13 +36,13 @@ export class UpdateTeamComponent implements OnInit {
 
   // Let op: de functionaliteit is erg beperkt tot alleen de naam en het geboortejaar beide tegelijkertijd te wijzigen.
   update() {
-    const team: string = `name:${this.name},year_of_birth:${this.establishedIn}`;
-    // console.log(player);
+    const team: string = `name:${this.name},established_in:${this.establishedIn},is_international:${this.international}`;
+    console.log(team);
 
     this.updateTeamService
       .update(this.id, team)
       .then((response: any) => {
-        // TODO
+        //TO DO
         console.log('Success?');
       })
       .catch((error: any) => {
@@ -61,5 +63,8 @@ export class UpdateTeamComponent implements OnInit {
       .catch((error: any) => {
         console.error(error);
       });
+  }
+  backClicked() {
+    this._location.back();
   }
 }

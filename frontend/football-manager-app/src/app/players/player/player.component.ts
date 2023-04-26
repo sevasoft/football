@@ -33,7 +33,7 @@ export class PlayerComponent implements OnInit {
   }
 
   // Let op: de functionaliteit is erg beperkt tot alleen de naam en het geboortejaar beide tegelijkertijd te wijzigen.
-  update() {
+  git update() {
     const player: string = `name:${this.name},year_of_birth:${this.birthYear}`;
     // console.log(player);
 
