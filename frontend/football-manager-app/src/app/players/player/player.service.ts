@@ -11,4 +11,8 @@ export class PlayerService {
   getById(id: string): any {
     return this.playersService.getPlayerById(id);
   }
+
+  update(id: string, player: string) {
+    return this.playersService.updatePlayerById(id, player);
+  }
 }
