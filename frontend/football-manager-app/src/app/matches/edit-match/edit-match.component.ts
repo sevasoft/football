@@ -11,6 +11,11 @@ import { DropdownComponent, DropdownValue } from 'src/app/dropdown-component/dro
 
 export class EditMatchComponent {
   id: string;
+  team1: string;
+  team2: string;
+  goalsTeam1: number;
+  goalsTeam2: number;
+  matchDate: Date;
   
   dropdownValues = [new DropdownValue( 2, 'NameTeam'),new DropdownValue( 3, 'joejoe')];
   
@@ -30,7 +35,8 @@ export class EditMatchComponent {
     // console.log(this.name);
   }
 
+  update() {
+    const team: string = `team1:${this.team1},established_in:${this.goalsTeam1}`;
+    console.log(team);
+  }
 }
-
-
-
