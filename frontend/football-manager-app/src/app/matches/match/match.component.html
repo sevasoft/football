@@ -4,7 +4,7 @@
         {{ match.goalsTeam1 }} &mdash; {{ match.goalsTeam2 }}
     </p>
     <p class="text-base leading-7 text-gray-600">{{ match.team1 }} &mdash; {{ match.team2 }}</p>
-    <p class="text-base leading-7 text-gray-600">{{ match.matchDate }}</p>
+    <p class="text-base leading-7 text-gray-600">{{ match.matchDate | date:'mediumDate' }}</p>
     <div>
         <button type="button" [routerLink]="['/matches', match.id]"
       class="rounded bg-indigo-600 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
