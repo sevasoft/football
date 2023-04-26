@@ -23,7 +23,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./players/players.module').then((m) => m.PlayersModule),
   },
-  { path: 'players/:id', component: PlayerComponent },
+  { path: 'players/:id', component: PlayerComponent }
 ];
 
 @NgModule({
