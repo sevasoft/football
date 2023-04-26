@@ -48,21 +48,21 @@ export class TeamsService {
     return axios.get(`http://localhost:8080/teams/by_name/${name}`);
   }
 
-/**
-   * @param id Id of the team.
-   * @param team Team data to update. Pay attention to the string value (without spaces).
-   *
-   * Example: updateTeamById(1, 'simons,2003,1')
-   */
-updateTeamById(id: string, team: string): any {
-  let data: any;
+  /**
+     * @param id Id of the team.
+     * @param team Team data to update. Pay attention to the string value (without spaces).
+     *
+     * Example: updateTeamById(1, 'simons,2003,1')
+     */
+  updateTeamById(id: string, team: string): any {
+    let data: any;
 
-  axios.put(`http://localhost:8080/teams/${id}`, team, {
-    headers: { 'Content-Type': 'text/plain' },
-  });
+    axios.put(`http://localhost:8080/teams/${id}`, team, {
+      headers: { 'Content-Type': 'text/plain' },
+    });
 
-  return data;
-}
+    return data;
+  }
 
   /**
    *
