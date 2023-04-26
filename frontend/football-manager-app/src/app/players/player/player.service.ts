@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
+import { PlayersService } from '../players.service';
+import { Player } from 'src/app/shared/player';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PlayerService {
+  constructor(private playersService: PlayersService) {}
 
-  constructor() { }
+  getById(id: string): any {
+    return this.playersService.getPlayerById(id);
+  }
 }
