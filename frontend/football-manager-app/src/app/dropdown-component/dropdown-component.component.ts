@@ -19,12 +19,7 @@ export class DropdownValue {
   standalone: true,
   selector: 'dropdown',
   template: `
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br> 
+
     <ul>    
     <select #teams (change)="selectItem(teams.value)" name="value" id="values">
         <option *ngFor="let value of values" value="{{ value.value }}">{{ value.label }}</option>

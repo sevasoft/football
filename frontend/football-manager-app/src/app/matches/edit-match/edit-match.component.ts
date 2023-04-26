@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DropdownComponent, DropdownValue } from 'src/app/dropdown-component/dropdown-component.component';
+import { TeamsService } from 'src/app/teams/teams.service';
 
 @Component({
   selector: 'fm-edit-match',
@@ -17,7 +18,10 @@ export class EditMatchComponent {
   goalsTeam2: number;
   matchDate: Date;
   
-  dropdownValues = [new DropdownValue( 2, 'NameTeam'),new DropdownValue( 3, 'joejoe')];
+  
+  
+  dropdownValues: DropdownValue[] = [];  
+  
   
   constructor(
     private route: ActivatedRoute,
@@ -27,7 +31,17 @@ export class EditMatchComponent {
   }
 
   ngOnInit() {
+    let teamsService = new TeamsService;
+    let teamsFromDatabase = teamsService.getTeams().then((response: any)=>{ 
+      let data = response.data
+      console.log(data);
+      for (let team of data) {
+      this.dropdownValues.push(new DropdownValue(team.id, team.name));
+      
+    }; });
     this.id = this.route.snapshot.paramMap.get('id')!;
+    
+    
   }
 
   setName(event: any) {
