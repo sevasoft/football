@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TeamService } from './team.service';
+import { TeamService } from './update-team.service';
 
 @Component({
   selector: 'fm-team',
-  templateUrl: './team.component.html',
-  styleUrls: ['./team.component.css'],
+  templateUrl: './update-team.component.html',
+  styleUrls: ['./update-team.component.css'],
 })
 export class TeamCompononent implements OnInit {
   id: string;
   name: string;
-  birthYear: number;
+  establishedIn: number;
+  international: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -33,7 +34,8 @@ export class TeamCompononent implements OnInit {
         console.log(response.data);
 
         this.name = response.data.name;
-        this.birthYear = response.data.birthYear;
+        this.establishedIn = response.data.establishedIn;
+        this.international = response.data.international;
       })
       .catch((error: any) => {
         console.error(error);
