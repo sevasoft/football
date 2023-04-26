@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tzn.football_manager.dtos.UpdateTeamDTO;
 import com.tzn.football_manager.entities.Team;
 import com.tzn.football_manager.services.TeamService;
 
@@ -39,6 +40,7 @@ public class TeamRestController {
         }
         return myResponse;
     }
+
     @GetMapping("/teams/by_name/{teamName}")
     public ResponseEntity<Team> findTeamByName(@PathVariable String teamName) throws FetchNotFoundException {
         ResponseEntity<Team> myResponse;
@@ -57,7 +59,7 @@ public class TeamRestController {
     }
 
     @PutMapping("/teams/{teamID}")
-    public ResponseEntity<Team> updateTeam(@PathVariable long teamID, @RequestBody String updateTeamData) {
+    public ResponseEntity<Team> updateTeam(@PathVariable long teamID, @RequestBody UpdateTeamDTO updateTeamData) {
         Team teamToBeUpdated = teamService.updateTeam(teamID, updateTeamData);
         return new ResponseEntity<Team>(teamToBeUpdated, HttpStatus.OK);
     }

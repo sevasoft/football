@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
+import { UpdateTeamDTO } from '../shared/updateTeamDTO';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TeamsService {
-  constructor() { }
+  constructor() {}
 
   /**
    * @param team New team to add. Pay attention to the string value (without spaces).
@@ -39,22 +40,22 @@ export class TeamsService {
   }
 
   /**
-* Retrieves the teams with the passed team name if it exists.
-*
-* @param name Name of one the teams.
-*/
+   * Retrieves the teams with the passed team name if it exists.
+   *
+   * @param name Name of one the teams.
+   */
   getTeamByName(name: string): any {
     console.log(name);
     return axios.get(`http://localhost:8080/teams/by_name/${name}`);
   }
 
   /**
-     * @param id Id of the team.
-     * @param team Team data to update. Pay attention to the string value (without spaces).
-     *
-     * Example: updateTeamById(1, 'simons,2003,1')
-     */
-  updateTeamById(id: string, team: string): any {
+   * @param id Id of the team.
+   * @param team Team data to update. Pay attention to the string value (without spaces).
+   *
+   * Example: updateTeamById(1, 'simons,2003,1')
+   */
+  updateTeamById(id: string, team: UpdateTeamDTO): any {
     let data: any;
 
     axios.put(`http://localhost:8080/teams/${id}`, team, {
@@ -75,11 +76,10 @@ export class TeamsService {
   }
 
   /**
- * Retrieves a list of all the matches in the database.
- */
+   * Retrieves a list of all the matches in the database.
+   */
   deleteAllTeams(): any {
     axios.delete('http://localhost:8080/teams');
     window.location.reload();
   }
 }
-

@@ -1,24 +1,24 @@
 package com.tzn.football_manager.services;
 
-import com.tzn.football_manager.entities.Team;
-import com.tzn.football_manager.repos.TeamRepo;
-import org.hibernate.FetchNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
-
 import java.util.List;
 import java.util.Optional;
+
+import org.hibernate.FetchNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.tzn.football_manager.dtos.UpdateTeamDTO;
+import com.tzn.football_manager.entities.Team;
+import com.tzn.football_manager.repos.TeamRepo;
+
 @Service
 public class TeamService {
     @Autowired
     TeamRepo teamRepo;
 
-
-    public List<Team> findAllTeams() throws FetchNotFoundException{
+    public List<Team> findAllTeams() throws FetchNotFoundException {
         List<Team> teams = teamRepo.findAll();
-        if(teamRepo.findAll().isEmpty()){
+        if (teamRepo.findAll().isEmpty()) {
             throw new FetchNotFoundException("There are no teams in the list", teams);
         }
         return teams;
@@ -31,9 +31,10 @@ public class TeamService {
         }
         return myTeam.get();
     }
+
     public Team findTeamByName(String name) throws FetchNotFoundException {
         Optional<Team> myTeam = teamRepo.findByName(name);
-        if(myTeam.isEmpty()){
+        if (myTeam.isEmpty()) {
             throw new FetchNotFoundException("Team: ", new Team());
         }
         return myTeam.get();
@@ -49,53 +50,71 @@ public class TeamService {
         return teamRepo.save(team);
     }
 
-    public Team updateTeam(Long teamId, String updatedTeamData) {
+    public Team updateTeam(Long teamId, UpdateTeamDTO updateTeamData) {
         Team existingTeam = teamRepo.findById(teamId).orElse(null);
         if (existingTeam == null) {
             return null;
         }
-        String[] updatedTeamInfo = updatedTeamData.split(",");
 
-        // bijwerken van de teamgegevens
-        for (String field : updatedTeamInfo) {
-            String[] keyValue = field.split(":");
-            String key = keyValue[0];
-            String value = keyValue[1];
+        existingTeam.setName(updateTeamData.name);
+        existingTeam.setEstablishedIn(updateTeamData.establishedIn);
+        existingTeam.setInternational(updateTeamData.isInternational);
 
-//            Door gebruik te maken van de switch kan je bijvoorbeeld "club_name:FC Nagele,established_in:1957" opgeven
-//            Dit zou de club_name en established_in van de speler bijwerken, terwijl het "is_international" ongewijzigd blijft.
-            switch (key) {
-                case "name":
-                    existingTeam.setName(value);
-                    break;
-                case "established_in":
-                    existingTeam.setEstablishedIn(Integer.parseInt(value));
-                    break;
-                case "is_international":
-                    Boolean isInternational = Boolean.parseBoolean(value);
-                    break;
-                default:
-                    throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid field: " + key);
-            }
-        }
+        // String[] updatedTeamInfo = updatedTeamData.split(",");
+        // System.out.println(updatedTeamInfo);
 
-        // opslaan van de bijgewerkte gegevens en retourneren van het bijgewerkte teamobject
+        // // bijwerken van de teamgegevens
+        // for (String field : updatedTeamInfo) {
+        // String[] keyValue = field.split(":");
+        // String key = keyValue[0];
+        // String value = keyValue[1];
+
+        // // Door gebruik te maken van de switch kan je bijvoorbeeld "club_name:FC
+        // // Nagele,established_in:1957" opgeven
+        // // Dit zou de club_name en established_in van de speler bijwerken, terwijl
+        // // het
+        // // "is_international" ongewijzigd blijft.
+        // switch (key) {
+        // case "club_name":
+        // existingTeam.setName(value);
+        // System.out.println(value);
+        // break;
+        // case "established_in":
+        // existingTeam.setEstablishedIn(Integer.parseInt(value));
+        // break;
+        // case "is_international":
+        // Boolean isInternational = Boolean.parseBoolean(value);
+        // existingTeam.setInternational(true);
+        // break;
+        // default:
+        // throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid field: " +
+        // key);
+        // }
+        // }
+        // existingTeam.setName("Bro");
+        // existingTeam.setEstablishedIn(42069);
+        // existingTeam.setInternational(false);
+
+        // opslaan van de bijgewerkte gegevens en retourneren van het bijgewerkte
+        // teamobject
         return teamRepo.save(existingTeam);
     }
 
     public TeamService(TeamRepo teamRepo) {
         this.teamRepo = teamRepo;
     }
-    public void deleteTeamById (Long teamId) throws FetchNotFoundException{
+
+    public void deleteTeamById(Long teamId) throws FetchNotFoundException {
         Optional<Team> myTeam = teamRepo.findById(teamId);
         if (myTeam.isEmpty()) {
             throw new FetchNotFoundException("Team: ", new Team());
         }
         teamRepo.deleteById(teamId);
     }
-    public void deleteAllTeams () throws FetchNotFoundException{
+
+    public void deleteAllTeams() throws FetchNotFoundException {
         List<Team> teams = teamRepo.findAll();
-        if(teamRepo.findAll().isEmpty()){
+        if (teamRepo.findAll().isEmpty()) {
             throw new FetchNotFoundException("There are no teams in the list", teams);
         }
         teamRepo.deleteAll();
