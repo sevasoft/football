@@ -19,14 +19,16 @@ export class TeamService {
   }
 
   delete(id: string) {
-    this.teamsService
-      .deleteTeamById(id)
-      .then((response: any) => {
-        console.log(response.data);
-      })
-      .catch((error: any) => {
-        console.error(error);
-      });
+    if (confirm("Do you wish to delete this team?")) {
+      this.teamsService
+        .deleteTeamById(id)
+        .then((response: any) => {
+          console.log(response.data);
+        })
+        .catch((error: any) => {
+          console.error(error);
+        });
+    }
   }
 
   update(id: string, team: string) {
