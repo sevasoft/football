@@ -28,7 +28,7 @@ export class PlayerComponent implements OnInit {
 
   private getById() {
     this.playerService
-      .getById('9')
+      .getById(this.id)
       .then((response: any) => {
         console.log(response.data);
 
