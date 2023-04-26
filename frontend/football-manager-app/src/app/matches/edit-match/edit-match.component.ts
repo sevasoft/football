@@ -19,7 +19,6 @@ export class EditMatchComponent {
   ) { }
 
   public updateTeam (value: any){
-    alert('hoihoi');
   }
 
   ngOnInit() {
