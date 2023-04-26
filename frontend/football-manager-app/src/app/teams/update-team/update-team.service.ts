@@ -11,4 +11,8 @@ export class UpdateTeamService {
   getById(id: string): any {
     return this.teamsService.getTeamById(id);
   }
+  update(id: string, player: string) {
+    return this.teamsService.updateTeamById(id, player);
+  }
 }
+
