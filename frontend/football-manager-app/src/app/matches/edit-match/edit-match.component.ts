@@ -37,6 +37,8 @@ export class EditMatchComponent {
       };
     });
     this.id = this.route.snapshot.paramMap.get('id')!;
+
+    this.matchDate = new Date();
   }
 
   setName(event: any) {
