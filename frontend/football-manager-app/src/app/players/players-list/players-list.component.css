@@ -12,6 +12,13 @@ button {
   width: 70px;
 }
 
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
 div {
   display: flex;
   justify-content: center;
