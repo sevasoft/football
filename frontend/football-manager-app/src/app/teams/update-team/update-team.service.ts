@@ -6,7 +6,7 @@ import { UpdateTeamDTO } from 'src/app/shared/updateTeamDTO';
   providedIn: 'root',
 })
 export class UpdateTeamService {
-  constructor(private teamsService: TeamsService) {}
+  constructor(private teamsService: TeamsService) { }
 
   getById(id: string): any {
     return this.teamsService.getTeamById(id);

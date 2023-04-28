@@ -5,7 +5,7 @@ import { MatchesService } from '../matches.service';
   providedIn: 'root'
 })
 export class MatchService {
-  constructor(private matchesService: MatchesService) {}
+  constructor(private matchesService: MatchesService) { }
 
   add(match: string) {
     this.matchesService
@@ -19,14 +19,16 @@ export class MatchService {
   }
 
   delete(id: string) {
-    this.matchesService
-      .deleteMatchById(id)
-      .then((response: any) => {
-        console.log(response.data);
-      })
-      .catch((error: any) => {
-        console.error(error);
-      });
+    if (confirm("Do you wish to delete this match?")) {
+      this.matchesService
+        .deleteMatchById(id)
+        .then((response: any) => {
+          console.log(response.data);
+        })
+        .catch((error: any) => {
+          console.error(error);
+        });
+    }
   }
 
   update(id: string, match: string) {

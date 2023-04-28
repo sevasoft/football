@@ -12,7 +12,7 @@ export class PlayersListComponent implements OnInit {
   editLink: string;
   @Input() player: Player;
 
-  constructor(private playersListService: PlayersListService) {}
+  constructor(private playersListService: PlayersListService) { }
 
   ngOnInit(): void {
     this.editLink = '/players/' + this.player.id;

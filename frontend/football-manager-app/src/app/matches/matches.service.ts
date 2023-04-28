@@ -68,6 +68,8 @@ export class MatchesService {
   deleteMatchById(id: string): any {
     axios.delete(`http://localhost:8080/matches/${id}`);
     // TODO: search for a better solution to rerender page like in React.
+    confirm("Match deletion successful");
+
     window.location.reload();
   }
 

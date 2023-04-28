@@ -5,7 +5,7 @@ import axios from 'axios';
   providedIn: 'root',
 })
 export class PlayersService {
-  constructor() {}
+  constructor() { }
 
   /**
    * @param player New player to add. Pay attention to the string value (without spaces).
@@ -68,6 +68,8 @@ export class PlayersService {
   deletePlayerById(id: string): any {
     axios.delete(`http://localhost:8080/players/${id}`);
     // TODO: search for a better solution to rerender page like in React.
+    confirm("Player deletion successful");
+
     window.location.reload();
   }
 

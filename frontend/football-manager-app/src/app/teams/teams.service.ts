@@ -6,7 +6,7 @@ import { UpdateTeamDTO } from '../shared/updateTeamDTO';
   providedIn: 'root',
 })
 export class TeamsService {
-  constructor() {}
+  constructor() { }
 
   /**
    * @param team New team to add. Pay attention to the string value (without spaces).
@@ -72,6 +72,8 @@ export class TeamsService {
   deleteTeamById(id: string): any {
     axios.delete(`http://localhost:8080/teams/${id}`);
     // TODO: search for a better solution to rerender page like in React.
+    confirm("Team deletion successful");
+
     window.location.reload();
   }
 
