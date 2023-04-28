@@ -6,6 +6,7 @@ import { UpdateTeamComponent } from './teams/update-team/update-team.component';
 import { PlayerCreationComponent } from './players/player-creation/player-creation.component';
 import { TeamCreationComponent } from './teams/team-creation/team-creation.component';
 import { EditMatchComponent } from './matches/edit-match/edit-match.component';
+import { MatchCreationComponent } from './matches/match-creation/match-creation.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path: 'teams/new',
     component: TeamCreationComponent,
+  },
+  {
+    path: 'matches/new',
+    component: MatchCreationComponent,
   },
   // Let op: de volgorde van de routing object blijkt belangrijk te zijn.
   // Anders als dit plaats voor de `players/new` dan ziet Angular dit als de dynamische endpoint (:id)
