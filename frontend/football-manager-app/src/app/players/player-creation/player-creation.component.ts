@@ -11,7 +11,7 @@ export class PlayerCreationComponent {
   name: string;
   birthYear: number;
 
-  constructor(private playerCreationService: PlayerCreationService) {}
+  constructor(private playerCreationService: PlayerCreationService) { }
 
   setName(event: any) {
     this.name = event.target.value;
