@@ -7,7 +7,12 @@ import { PlayerComponent } from './player/player.component';
 import { PlayerCreationComponent } from './player-creation/player-creation.component';
 
 @NgModule({
-  declarations: [PlayersComponent, PlayersListComponent, PlayerComponent, PlayerCreationComponent],
+  declarations: [
+    PlayersComponent, 
+    PlayersListComponent, 
+    PlayerComponent, 
+    PlayerCreationComponent],
+    
   imports: [
     CommonModule,
     PlayersRoutingModule

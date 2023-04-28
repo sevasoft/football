@@ -5,6 +5,7 @@ import { MatchComponent } from './match/match.component';
 import { MatchesRoutingModule } from './matches-routing.module';
 import { EditMatchComponent } from './edit-match/edit-match.component';
 import { DropdownComponent } from '../dropdown-component/dropdown-component.component';
+import { MatchCreationComponent } from './match-creation/match-creation.component';
 
 
 
@@ -13,6 +14,7 @@ import { DropdownComponent } from '../dropdown-component/dropdown-component.comp
     MatchesComponent,
     MatchComponent,
     EditMatchComponent,
+    MatchCreationComponent,
   ],
   imports: [
     CommonModule,
