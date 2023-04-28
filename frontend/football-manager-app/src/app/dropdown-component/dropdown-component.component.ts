@@ -1,13 +1,12 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { Team } from "../shared/team";
 import { CommonModule } from "@angular/common";
 
 
 export class DropdownValue {
-  value:number;
-  label:string;
+  value: number;
+  label: string;
 
-  constructor(value:number,label:string) {
+  constructor(value: number, label: string) {
     this.value = value;
     this.label = label;
   }
@@ -40,7 +39,7 @@ export class DropdownComponent {
 
   selectItem(value: any) {
     this.select.emit(value);
-    console.log(value); 
+    console.log(value);
   }
 
 
