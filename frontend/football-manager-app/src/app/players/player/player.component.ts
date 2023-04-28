@@ -66,7 +66,6 @@ export class PlayerComponent implements OnInit {
       });
   }
   backClicked() {
-    // this._location.back();
     this.router.navigateByUrl('/players');
   }
 }

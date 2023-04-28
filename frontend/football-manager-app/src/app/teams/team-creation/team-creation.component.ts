@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TeamCreationService } from './team-creation.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'fm-team-creation',
@@ -11,7 +12,10 @@ export class TeamCreationComponent {
   establishedIn: number;
   international: boolean;
 
-  constructor(private teamCreationService: TeamCreationService) { }
+  constructor(
+    private teamCreationService: TeamCreationService,
+    private router: Router
+  ) { }
 
   setName(event: any) {
     this.name = event.target.value;
@@ -41,5 +45,8 @@ export class TeamCreationComponent {
       .catch((error: any) => {
         console.error(error);
       });
+  }
+  backClicked() {
+    this.router.navigateByUrl('/teams');
   }
 }

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UpdateTeamService } from './update-team.service';
 import { UpdateTeamDTO } from 'src/app/shared/updateTeamDTO';
-import { Location } from '@angular/common';
 
 import axios from 'axios';
 
@@ -24,7 +23,9 @@ export class UpdateTeamComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private updateTeamService: UpdateTeamService, private _location: Location
+    private updateTeamService: UpdateTeamService,
+    private router: Router
+
 
   ) { }
 
@@ -97,7 +98,7 @@ export class UpdateTeamComponent implements OnInit {
       });
   }
   backClicked() {
-    this._location.back();
+    this.router.navigateByUrl('/teams');
   }
 
 }

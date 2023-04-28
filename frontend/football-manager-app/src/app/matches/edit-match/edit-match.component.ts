@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DropdownComponent, DropdownValue } from 'src/app/dropdown-component/dropdown-component.component';
 import { TeamsService } from 'src/app/teams/teams.service';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'fm-edit-match',
@@ -21,7 +20,9 @@ export class EditMatchComponent {
   dropdownValues: DropdownValue[] = [];
 
   constructor(
-    private route: ActivatedRoute, private _location: Location) { }
+    private route: ActivatedRoute,
+    private router: Router
+) { }
 
   public updateTeam(value: any) {
   }
@@ -48,6 +49,6 @@ export class EditMatchComponent {
     console.log(team);
   }
   backClicked() {
-    this._location.back();
+    this.router.navigateByUrl('/players');  
   }
 }

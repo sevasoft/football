@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PlayerCreationService } from './player-creation.service';
-import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 
 @Component({
@@ -14,7 +15,7 @@ export class PlayerCreationComponent {
   birthYear: number;
 
   constructor(private playerCreationService: PlayerCreationService,
-    private _location: Location  
+    private router: Router 
     ) { }
 
   setName(event: any) {
@@ -47,7 +48,5 @@ export class PlayerCreationComponent {
       });
   }
   backClicked() {
-    this._location.back();
-  }
-
+    this.router.navigateByUrl('/players');  }
 }
