@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { PlayerCreationService } from './player-creation.service';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'fm-player-creation',
@@ -11,7 +13,9 @@ export class PlayerCreationComponent {
   name: string;
   birthYear: number;
 
-  constructor(private playerCreationService: PlayerCreationService) { }
+  constructor(private playerCreationService: PlayerCreationService,
+    private _location: Location  
+    ) { }
 
   setName(event: any) {
     this.name = event.target.value;
@@ -42,4 +46,8 @@ export class PlayerCreationComponent {
         console.error(error);
       });
   }
+  backClicked() {
+    this._location.back();
+  }
+
 }

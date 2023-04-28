@@ -2,14 +2,13 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DropdownComponent, DropdownValue } from 'src/app/dropdown-component/dropdown-component.component';
 import { TeamsService } from 'src/app/teams/teams.service';
-
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'fm-edit-match',
   templateUrl: './edit-match.component.html',
   styleUrls: ['./edit-match.component.css']
 })
-
 
 export class EditMatchComponent {
   id: string;
@@ -18,32 +17,25 @@ export class EditMatchComponent {
   goalsTeam1: number;
   goalsTeam2: number;
   matchDate: Date;
-  
-  
-  
-  dropdownValues: DropdownValue[] = [];  
-  
-  
+
+  dropdownValues: DropdownValue[] = [];
+
   constructor(
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute, private _location: Location) { }
 
-  ) { }
-
-  public updateTeam (value: any){
+  public updateTeam(value: any) {
   }
 
   ngOnInit() {
     let teamsService = new TeamsService;
-    let teamsFromDatabase = teamsService.getTeams().then((response: any)=>{ 
+    let teamsFromDatabase = teamsService.getTeams().then((response: any) => {
       let data = response.data
       console.log(data);
       for (let team of data) {
-      this.dropdownValues.push(new DropdownValue(team.id, team.name));
-      
-    }; });
+        this.dropdownValues.push(new DropdownValue(team.id, team.name));
+      };
+    });
     this.id = this.route.snapshot.paramMap.get('id')!;
-    
-    
   }
 
   setName(event: any) {
@@ -55,5 +47,7 @@ export class EditMatchComponent {
     const team: string = `team1:${this.team1},established_in:${this.goalsTeam1}`;
     console.log(team);
   }
-
+  backClicked() {
+    this._location.back();
+  }
 }
